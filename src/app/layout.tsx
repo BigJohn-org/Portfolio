@@ -1,32 +1,31 @@
-import Link from "next/link";
+import type { Metadata } from "next";
+import { Poppins } from "next/font/google";
 import "./globals.css";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
-export const metadata = {
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-poppins",
+});
+
+export const metadata: Metadata = {
   title: "Imeobong John | Portfolio",
-  description: "My personal portfolio",
+  description: "Portfolio of Imeobong John, Junior Software Engineer.",
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
-    <html lang="en">
-      <body>
-        <header className="header">
-          <nav className="navbar container">
-            <h1 className="logo">Imeobong John Abasiediedu</h1>
-            <div className="nav-links">
-              <Link href="/">Home</Link>
-              <Link href="/about">About</Link>
-              <Link href="/project">Projects</Link>
-              <Link href="/contact">Contact</Link>
-            </div>
-          </nav>
-        </header>
-
-        <main className="main">{children}</main>
-
-        <footer className="footer container">
-          <p>© {new Date().getFullYear()} Imeobong John. All rights reserved.</p>
-        </footer>
+    <html lang="en" className="scroll-smooth">
+      <body className={`${poppins.variable} font-sans bg-slate-900 text-slate-100 min-h-screen flex flex-col`}>
+        <Header />
+        <main className="flex-grow pt-16">{children}</main>
+        <Footer />
       </body>
     </html>
   );
