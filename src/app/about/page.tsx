@@ -21,7 +21,7 @@ export default function About() {
 
     const stats = [
         { number: '5+', label: 'Projects Completed' },
-        { number: '0+', label: 'Years Coding' },
+        { number: '2+', label: 'Years Coding' },
         { number: '9+', label: 'Technologies' }
     ];
 
