@@ -1,18 +1,38 @@
-import type { Metadata } from "next";
-import { Poppins } from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import { Inter, Instrument_Serif, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
+import Header from "@/components/layout/Header";
+import Footer from "@/components/layout/Footer";
+import LenisProvider from "@/components/providers/LenisProvider";
+import Noise from "@/components/ui/Noise";
+import { baseMetadata, personSchema } from "@/lib/seo";
 
-const poppins = Poppins({
+const sans = Inter({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-  variable: "--font-poppins",
+  variable: "--font-sans",
+  display: "swap",
 });
 
-export const metadata: Metadata = {
-  title: "Imeobong John | Portfolio",
-  description: "Portfolio of Imeobong John, Junior Software Engineer.",
+const serif = Instrument_Serif({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-serif",
+  display: "swap",
+});
+
+const mono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-mono",
+  display: "swap",
+});
+
+export const metadata: Metadata = baseMetadata;
+
+export const viewport: Viewport = {
+  themeColor: "#0a0a0b",
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
 };
 
 export default function RootLayout({
@@ -21,11 +41,24 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="scroll-smooth">
-      <body className={`${poppins.variable} font-sans bg-slate-900 text-slate-100 min-h-screen flex flex-col`}>
-        <Header />
-        <main className="flex-grow pt-16">{children}</main>
-        <Footer />
+    <html lang="en" className={`${sans.variable} ${serif.variable} ${mono.variable}`}>
+      <body className="bg-ink font-sans text-bone antialiased">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema()) }}
+        />
+        <a
+          href="#top"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-md focus:bg-bone focus:px-3 focus:py-2 focus:font-mono focus:text-xs focus:uppercase focus:text-ink"
+        >
+          Skip to content
+        </a>
+        <LenisProvider>
+          <Noise />
+          <Header />
+          <main id="top">{children}</main>
+          <Footer />
+        </LenisProvider>
       </body>
     </html>
   );
