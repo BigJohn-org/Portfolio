@@ -54,7 +54,7 @@ export async function GET() {
               margin: 0,
             }}
           >
-            Full-Stack Engineer · Stellar · Soroban
+            Junior Software Engineer · Lagos
           </p>
           <h1
             style={{
@@ -66,7 +66,7 @@ export async function GET() {
               maxWidth: 1000,
             }}
           >
-            Building African fintech infrastructure on Stellar.
+            Building clean, reliable, and practical software.
           </h1>
         </div>
 
@@ -83,7 +83,7 @@ export async function GET() {
         >
           <span>Lagos · WAT</span>
           <span style={{ color: "#ff5b2e" }}>
-            ● Available for senior engineering roles
+            ● Open to junior / mid engineering roles
           </span>
         </div>
       </div>

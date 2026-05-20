@@ -6,48 +6,48 @@ export type Milestone = {
   kind: "education" | "work" | "build" | "milestone";
   body: string;
   highlights?: string[];
-  editable?: boolean; // marks fields user should confirm
+  editable?: boolean; // marks fields the user should confirm
 };
 
 /**
- * Confirmed: Semicolon Africa engineering training.
- * Other entries are reasonable placeholders structured for easy edit.
+ * Honest chronology. Semicolon Africa is confirmed; other rows are
+ * structured for easy edit — marked `editable: true` where they need user input.
  */
 export const journey: Milestone[] = [
   {
     year: "2026",
     range: "Q1 — present",
-    title: "Stellar Builder · Original protocol work",
-    org: "Independent",
+    title: "Exploring the Stellar ecosystem",
+    org: "Independent · open source",
     kind: "build",
-    body: "Shipped seven original Stellar / Soroban projects in a single quarter — USSD wallet gateway, on-chain Ajo, tokenized invoices, NGN/USDC SDK, healthcare settlement, education funding rails, and a developer dashboard.",
-    highlights: ["7 original repositories", "Rust + Go + TypeScript", "Africa-first design"],
+    body: "Spending time on Soroban smart contracts in Rust and small product experiments around them — a Nigerian Ajo (rotating-savings) on-chain, a USSD wallet gateway, a healthcare settlement sketch, an NGN/USDC SDK exploration. None of these are production yet; they're how I'm learning the platform.",
+    highlights: ["Rust + Go + TypeScript", "Soroban smart contracts", "Small, honest experiments"],
   },
   {
     year: "2026",
     range: "Q1",
-    title: "OSS Contributor · Stellar Ecosystem",
-    org: "Open Source",
+    title: "Open-source contributions",
+    org: "Stellar ecosystem · OnlyDust",
     kind: "work",
-    body: "Active contributor across the Stellar ecosystem — SwiftChain, StrellerMinds, Agora, ChainVerse, and others — landing changes on smart contracts, frontends, and backend services in production-adjacent codebases.",
+    body: "Contributing to projects across the Stellar ecosystem — SwiftChain, StrellerMinds, Agora, ChainVerse, and others — landing PRs on smart contracts, frontends, and backend services. A great way to read production-adjacent code and learn how teams actually ship.",
     highlights: ["20+ ecosystem repos touched", "Soroban + NestJS + Next.js"],
   },
   {
     year: "2025",
     range: "2025 — 2026",
-    title: "Engineering Programme",
+    title: "Engineering programme",
     org: "Semicolon Africa",
     kind: "education",
-    body: "Intensive engineering training covering backend systems, object-oriented design, system architecture, and collaborative software delivery. Strong emphasis on clean abstractions, ownership, and shipped work over coursework.",
+    body: "Intensive, hands-on engineering training — backend systems, object-oriented design, collaborative software delivery, system-design fundamentals. The bias was always toward shipping work over coursework, which suits me.",
     highlights: ["Java / OOP", "System design", "Collaborative delivery"],
   },
   {
     year: "2024",
     title: "Self-directed foundation",
-    org: "BigJohn-org",
+    org: "Personal · GitHub",
     kind: "build",
-    body: "Built a foundation across Python, JavaScript, and Java — task managers, movie explorers, URL shorteners, chat rooms, Bible search — accumulating the muscle that the protocol work later compounded on.",
-    highlights: ["Python / JS / Java", "Full-stack basics", "8 learning-phase repos"],
+    body: "Worked through the basics across Python, JavaScript, and Java by building small things end-to-end — a wallet system, a to-do manager, a movie explorer, a URL shortener, a Bible search app, a chat room. The point was to finish each one, not to make them famous.",
+    highlights: ["Python / JS / Java", "Full-stack basics"],
     editable: true,
   },
   {

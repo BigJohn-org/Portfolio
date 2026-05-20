@@ -8,10 +8,10 @@ import Marquee from "@/components/motion/Marquee";
 import Tag from "@/components/ui/Tag";
 
 const stats = [
-  { value: "75", label: "repositories" },
-  { value: "7", label: "original Stellar projects" },
-  { value: "4", label: "languages shipped" },
-  { value: "2026", label: "active year" },
+  { value: "75+", label: "public repositories" },
+  { value: "6", label: "languages I write in" },
+  { value: "1", label: "engineering programme · Semicolon" },
+  { value: "Daily", label: "commit cadence" },
 ];
 
 export default function About() {
@@ -41,9 +41,9 @@ export default function About() {
           <div>
             <Reveal>
               <h2 className="font-sans text-display-xl font-medium tracking-tightest text-balance">
-                I build the rails the financial system{" "}
+                A junior engineer{" "}
                 <span className="display-serif font-normal text-bone/90">
-                  forgot to lay.
+                  trying to be a better one.
                 </span>
               </h2>
             </Reveal>
@@ -54,10 +54,10 @@ export default function About() {
             </Reveal>
 
             <Reveal delay={0.2} className="mt-12 flex flex-wrap gap-2">
-              <Tag tone="signal">Rust · Soroban</Tag>
-              <Tag tone="bone">Next.js · Edge</Tag>
-              <Tag tone="accent">Stellar Network</Tag>
-              <Tag tone="ghost">Go · Python · Java</Tag>
+              <Tag tone="bone">Python · Java · JS</Tag>
+              <Tag tone="signal">Go · TypeScript</Tag>
+              <Tag tone="accent">Learning Rust · Soroban</Tag>
+              <Tag tone="ghost">APIs · Full-stack</Tag>
             </Reveal>
           </div>
 
@@ -99,6 +99,67 @@ export default function About() {
               </Reveal>
             ))}
           </div>
+        </div>
+
+        {/* Personal row: quote + interests + now */}
+        <div className="mt-24 grid grid-cols-1 gap-6 md:grid-cols-12">
+          {/* Quote */}
+          <Reveal className="md:col-span-5">
+            <figure className="glass-strong relative h-full rounded-2xl p-8">
+              <span
+                aria-hidden
+                className="absolute left-5 top-2 font-serif text-7xl italic leading-none text-accent/40"
+              >
+                &ldquo;
+              </span>
+              <blockquote className="relative font-serif text-2xl italic leading-snug text-bone md:text-3xl">
+                {portfolioData.quote.text}
+              </blockquote>
+              <figcaption className="mt-6 font-mono text-[11px] uppercase tracking-[0.18em] text-steel">
+                — {portfolioData.quote.author} · a quote I keep returning to
+              </figcaption>
+            </figure>
+          </Reveal>
+
+          {/* Interests */}
+          <Reveal delay={0.1} className="md:col-span-4">
+            <div className="h-full rounded-2xl border border-bone/10 bg-bone/[0.02] p-8">
+              <p className="eyebrow mb-5">// outside the editor</p>
+              <ul className="space-y-4">
+                {portfolioData.interests.map((i) => (
+                  <li key={i.label}>
+                    <p className="font-serif text-xl italic text-bone">
+                      {i.label}
+                    </p>
+                    <p className="mt-1 text-sm leading-relaxed text-bone/60">
+                      {i.note}
+                    </p>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </Reveal>
+
+          {/* Now */}
+          <Reveal delay={0.18} className="md:col-span-3">
+            <div className="flex h-full flex-col rounded-2xl border border-bone/10 bg-bone/[0.02] p-8">
+              <div className="mb-5 flex items-center gap-2">
+                <span className="relative inline-flex size-2">
+                  <span className="absolute inset-0 rounded-full bg-accent" />
+                  <span className="absolute inset-0 animate-ping rounded-full bg-accent/60" />
+                </span>
+                <p className="eyebrow">// now</p>
+              </div>
+              <ul className="space-y-3 text-sm text-bone/75">
+                {portfolioData.nowFocus.map((n) => (
+                  <li key={n} className="flex items-start gap-2 leading-snug">
+                    <span className="mt-1.5 size-1 shrink-0 rounded-full bg-accent" />
+                    <span>{n}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </Reveal>
         </div>
 
         {/* Skills marquee */}

@@ -12,21 +12,25 @@ export default function Projects() {
           <div>
             <Reveal>
               <p className="eyebrow mb-6">
-                <span className="text-accent">003 — </span>Selected work
+                <span className="text-accent">003 — </span>Things I&apos;ve built
               </p>
             </Reveal>
             <Reveal>
               <h2 className="font-sans text-display-xl font-medium tracking-tightest text-balance">
-                Seven shipments,{" "}
-                <span className="display-serif font-normal">one thesis.</span>
+                A mix of{" "}
+                <span className="display-serif font-normal">
+                  experiments
+                </span>{" "}
+                and{" "}
+                <span className="display-serif font-normal">fundamentals.</span>
               </h2>
             </Reveal>
           </div>
           <Reveal delay={0.1}>
             <p className="max-w-sm text-bone/65">
-              Original Stellar and Soroban work from a single quarter — payment rails,
-              communal-savings contracts, and on-chain settlement primitives designed
-              for African users first.
+              Some Stellar / Soroban experiments I&apos;m using to learn the
+              ecosystem, plus the earlier projects that taught me the fundamentals.
+              I leave the small ones up on purpose — that&apos;s part of the journey.
             </p>
           </Reveal>
         </div>

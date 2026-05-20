@@ -39,17 +39,17 @@ export default function Timeline() {
           </Reveal>
           <Reveal>
             <h2 className="font-sans text-display-xl font-medium tracking-tightest text-balance">
-              From learning loops to{" "}
+              The short version of{" "}
               <span className="display-serif font-normal">
-                shipping protocols.
+                how I got here.
               </span>
             </h2>
           </Reveal>
           <Reveal delay={0.1}>
             <p className="mt-6 max-w-xl text-bone/65 leading-relaxed">
-              A short chronology — engineering training, ecosystem contributions, and
-              original builds. The timeline reads like a compounding curve, because
-              that&apos;s what it is.
+              A simple chronology — engineering training at Semicolon, the earlier
+              learning-phase projects, and the things I&apos;m currently exploring.
+              Nothing dramatic, just steady steps.
             </p>
           </Reveal>
         </div>

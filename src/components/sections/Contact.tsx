@@ -39,18 +39,18 @@ export default function Contact() {
             </Reveal>
             <Reveal>
               <h2 className="font-sans text-display-xl font-medium tracking-tightest text-balance">
-                Let&apos;s build the{" "}
+                Say{" "}
                 <span className="display-serif font-normal text-accent">
-                  obvious thing
-                </span>{" "}
-                — first.
+                  hi
+                </span>
+                .
               </h2>
             </Reveal>
             <Reveal delay={0.1}>
               <p className="mt-6 max-w-md text-bone/65 leading-relaxed">
-                If you&apos;re working on serious fintech, payment rails, Stellar /
-                Soroban tooling, or anything Africa-shaped — let&apos;s talk.
-                Otherwise: just say hi.
+                I&apos;m looking for junior or mid software engineering roles, open-source
+                projects to contribute to, and interesting people to learn from.
+                If any of those sound like you — drop a line.
               </p>
             </Reveal>
 

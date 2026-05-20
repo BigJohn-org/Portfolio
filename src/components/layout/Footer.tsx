@@ -16,13 +16,13 @@ export default function Footer() {
       <div className="container-editorial py-16">
         <div className="flex flex-col gap-12 lg:flex-row lg:items-end lg:justify-between">
           <div>
-            <p className="eyebrow mb-6">// end transmission</p>
+            <p className="eyebrow mb-6">// end of page</p>
             <h2 className="font-serif text-display-lg italic text-balance">
-              Build something that <span className="text-accent">matters</span>.
+              Thanks for <span className="text-accent">stopping by</span>.
             </h2>
             <p className="mt-6 max-w-md text-bone/70">
-              Open to senior engineering roles, founder collaborations, and serious
-              fintech work across Africa.
+              Open to junior / mid software engineering roles, open-source
+              collaboration, and conversations with people building thoughtful things.
             </p>
             <Link
               href={`mailto:${portfolioData.socials.email}`}

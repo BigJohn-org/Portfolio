@@ -52,19 +52,19 @@ export default function Hero() {
         <div className="mt-12 max-w-[1200px]">
           <Reveal delay={0.15}>
             <p className="eyebrow mb-8">
-              <span className="text-accent">001 — </span>Full-Stack Engineer · Stellar · Soroban
+              <span className="text-accent">001 — </span>Junior Software Engineer · Lagos
             </p>
           </Reveal>
 
           <h1 className="font-sans text-display-2xl font-medium tracking-tightest text-bone text-balance">
             <SplitText
-              text="Building African fintech"
+              text="Building clean, reliable,"
               as="span"
               className="block"
               delay={0.2}
             />
             <SplitText
-              text="infrastructure on Stellar."
+              text="and practical software."
               as="span"
               className="display-serif block font-normal text-bone/95"
               delay={0.5}
@@ -73,9 +73,10 @@ export default function Hero() {
 
           <Reveal delay={1.1} className="mt-10 grid max-w-3xl grid-cols-1 gap-8 md:grid-cols-[1fr_auto] md:items-end">
             <p className="text-lg leading-relaxed text-bone/75 text-balance">
-              I design payment rails, Soroban smart contracts, and the interfaces that
-              make them feel inevitable — from USSD wallet gateways to tokenized
-              rotating-savings on-chain.
+              I&apos;m a junior software engineer working with Python, Java,
+              JavaScript, Go, and modern web technologies — building APIs, full-stack
+              apps, and small tools. Lately I&apos;ve also been exploring the Stellar
+              ecosystem and writing Soroban smart contracts as I learn.
             </p>
 
             {/* Rotating tagline */}
@@ -120,7 +121,7 @@ export default function Hero() {
               <br />
               <span>imeobong.john</span>{" "}
               <span className="text-steel">
-                — engineer building for the next billion.
+                — junior engineer, still learning out loud.
               </span>
               <span className="ml-1 inline-block h-3 w-[7px] translate-y-[2px] bg-accent animate-pulse" />
             </div>

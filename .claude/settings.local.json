@@ -2,7 +2,8 @@
   "permissions": {
     "allow": [
       "Bash(curl -sS -o /dev/null -w \"status=%{http_code}\\\\n\" http://localhost:3001/)",
-      "Bash(curl -sS http://localhost:3001/)"
+      "Bash(curl -sS http://localhost:3001/)",
+      "WebFetch(domain:portfolio-two-nu-86.vercel.app)"
     ]
   }
 }

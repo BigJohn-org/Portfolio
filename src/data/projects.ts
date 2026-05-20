@@ -1,4 +1,4 @@
-export type ProjectStatus = "production" | "active" | "prototype" | "archived";
+export type ProjectStatus = "production" | "active" | "learning" | "prototype" | "archived";
 
 export type Project = {
   slug: string;
@@ -13,209 +13,235 @@ export type Project = {
   year: string;
   repo: string;
   demo?: string | null;
-  accent: string; // hex
+  accent: string;
   tags: string[];
 };
 
 /**
- * Curated from BigJohn-dev. Forks excluded. Order = strength descending.
- * Case-study copy is drafted from each repo's stated purpose, sharpened.
+ * Mix of recent Stellar-ecosystem experiments and earlier learning-phase projects.
+ * The earlier ones (Wallet System, ToDo, Calculator, Movie Explorer) match what
+ * Imeobong shows on his live portfolio. Voice is honest — small tools, real
+ * learning, not a startup pitch.
  */
 export const projects: Project[] = [
+  // ───────── Recent: Stellar / Soroban experiments ─────────
   {
     slug: "stellar-ussd",
     name: "StellarUSSD",
-    oneLiner: "Wallets that work without smartphones or internet.",
+    oneLiner: "A Stellar wallet you can use from a feature phone.",
     problem:
-      "Roughly half of sub-Saharan Africa is unbanked and an even larger share holds feature phones. Stellar's promise of cheap global settlement is invisible to anyone without a smartphone and reliable bandwidth.",
+      "A lot of people in Nigeria still use feature phones, or have a smartphone but no data. They can't use a normal crypto wallet app. I wanted to see if you could put one behind a USSD code instead — the same way mobile money already works.",
     approach:
-      "A Go backend that terminates USSD sessions from telco gateways and translates *123#-style menus into Stellar transactions. Session state, key custody, and rate-limiting live server-side; the phone is just a dumb terminal.",
+      "A Go backend that talks to telco USSD gateways and translates *123#-style menus into Stellar transactions. The phone is dumb; session state, keys, and rate-limiting all live on the server.",
     outcome:
-      "Any cooperative or remittance operator with a short-code can offer a Stellar wallet to feature-phone users — no app, no data plan, no smartphone.",
-    stack: ["Go", "Stellar SDK", "PostgreSQL", "Africa's Talking", "Docker"],
+      "An early prototype that proves the idea works end-to-end. A lot more to harden before it's production-ready, but the core flow is there.",
+    stack: ["Go", "Stellar SDK", "PostgreSQL", "Docker"],
     highlights: [
-      "Session-state machine survives dropped USSD sessions",
-      "Server-side custody with audit log",
-      "Telco-agnostic gateway adapter pattern",
+      "Session state machine survives dropped sessions",
+      "Server-side key custody for the prototype",
+      "Telco-agnostic gateway adapter",
     ],
     status: "active",
     year: "2026",
     repo: "https://github.com/BigJohn-dev/StellarUSSD-",
     demo: null,
     accent: "#ff5b2e",
-    tags: ["Infrastructure", "Stellar", "Africa"],
+    tags: ["Backend", "Stellar", "Experiment"],
   },
   {
     slug: "ajochain",
     name: "AjoChain",
-    oneLiner: "Nigeria's rotating-savings tradition, made trustless.",
+    oneLiner: "Digital Ajo (rotating savings) using Soroban smart contracts.",
     problem:
-      "Ajo / Esusu / Adashe — informal rotating-savings groups — move billions across Africa annually but rely entirely on social trust. A defaulting collector wipes out the pool with zero recourse.",
+      "Ajo / Esusu groups are everywhere in Nigeria — friends pool money each month and take turns receiving the pot. It works on trust, which means it sometimes doesn't work. I wanted to try encoding the rules in a contract.",
     approach:
-      "Soroban smart contracts encode the rotation: members deposit on schedule, a determined order pays out, the contract enforces the round. The collector becomes code.",
+      "Soroban smart contracts in Rust. Members deposit on a schedule, the contract decides who gets the payout in which round, and a default doesn't depend on the group leader's mercy.",
     outcome:
-      "A familiar communal savings primitive, hardened against the social-trust failure that has cost generations of African savers their capital.",
-    stack: ["Rust", "Soroban", "Stellar", "TypeScript"],
+      "Working prototype contract with the basic rotation logic. Still learning Soroban — there's a lot to improve on the contract economics side.",
+    stack: ["Rust", "Soroban", "Stellar"],
     highlights: [
       "Schedule-driven payout enforced on-chain",
-      "Default handling without group-leader veto",
-      "Composable with NGN on/off ramps",
+      "Default-handling without group-leader veto",
+      "First real Soroban project — written while learning",
     ],
-    status: "active",
+    status: "learning",
     year: "2026",
     repo: "https://github.com/BigJohn-dev/AjoChain",
     demo: null,
     accent: "#5c8dff",
-    tags: ["Smart Contracts", "Soroban", "Fintech"],
+    tags: ["Smart Contracts", "Soroban", "Learning"],
   },
   {
     slug: "medipay-stellar",
     name: "MediPay Stellar",
-    oneLiner: "A decentralized payment layer for emerging-market healthcare.",
+    oneLiner: "A small experiment in healthcare settlement on Stellar.",
     problem:
-      "Healthcare payments in Nigeria, Kenya, and Ghana hemorrhage at every settlement step — hospital ↔ HMO ↔ NHIS, weeks of float, frequent disputes. Patients pay cash because nobody trusts the rails.",
+      "Hospital ↔ HMO settlement in Nigeria is slow and full of disputes. I was curious whether the Stellar transaction model — cheap, fast, deterministic — could be a fit.",
     approach:
-      "Stellar as the settlement substrate; Rust services to orchestrate provider-payer reconciliation; tokenized claim instruments with deterministic dispute paths.",
+      "A minimal Rust service that orchestrates provider-payer reconciliation and tokenizes claim instruments on Stellar. Still a sketch, not a product.",
     outcome:
-      "Hours-not-weeks settlement, programmatic dispute resolution, and a paper trail that survives an audit.",
-    stack: ["Rust", "Stellar", "Soroban", "TypeScript"],
+      "Useful as a learning exercise in domain modelling and tokenized state. Helped me get comfortable with Stellar's account model.",
+    stack: ["Rust", "Stellar", "TypeScript"],
     highlights: [
-      "Provider/payer reconciliation primitives",
-      "Tokenized claim instruments",
-      "MIT-licensed reference implementation",
+      "Reconciliation primitives in Rust",
+      "Claim tokenization sketch",
+      "MIT-licensed — anyone can fork and extend",
     ],
-    status: "active",
+    status: "learning",
     year: "2026",
     repo: "https://github.com/BigJohn-dev/-MediPay-Stellar",
     demo: null,
     accent: "#ff7a3d",
-    tags: ["Healthcare", "Stellar", "Rust"],
-  },
-  {
-    slug: "edutoken",
-    name: "EduToken",
-    oneLiner: "Transparent scholarship rails, on-chain from invoice to payout.",
-    problem:
-      "Donors fund African scholarships and have no honest answer to 'did the money reach the school?'. NGOs spend more on reporting trust than on tuition.",
-    approach:
-      "Schools issue fee invoices on Stellar; donors fund them line-item; payouts unlock on attendance/grade attestations. The audit is the chain.",
-    outcome:
-      "Donor receipts become continuous, not annual. Schools stop chasing wires. Students stop being collateral for paperwork.",
-    stack: ["TypeScript", "Stellar SDK", "Next.js", "Postgres"],
-    highlights: [
-      "Invoice → escrow → release flow on Stellar",
-      "Attestation-gated payouts",
-      "Donor / school / student tri-portal",
-    ],
-    status: "active",
-    year: "2026",
-    repo: "https://github.com/BigJohn-dev/EduToken-",
-    demo: null,
-    accent: "#5c8dff",
-    tags: ["Education", "Stellar", "TypeScript"],
+    tags: ["Stellar", "Rust", "Experiment"],
   },
   {
     slug: "nairaramp",
     name: "NairaRamp",
-    oneLiner: "An NGN ↔ USDC SDK any Nigerian developer can drop in.",
+    oneLiner: "An SDK exploration for NGN ↔ USDC conversion.",
     problem:
-      "Every Nigerian fintech that touches USDC ends up rebuilding the same fragile bridge to NGN — KYC, off-ramp partner, fees, rails. The work is duplicated across every team.",
+      "A few of my friends building Nigerian fintech kept rebuilding the same NGN/USDC bridge — KYC, off-ramp partner, fees. I wanted to see what a single typed SDK could look like.",
     approach:
-      "An open-source SDK that abstracts the bridge: a single typed surface for quote → quote-accept → settle, swappable provider adapters underneath.",
+      "TypeScript SDK with a thin runtime: quote → quote-accept → settle. Provider adapters underneath, so the bridge details swap out without changing app code.",
     outcome:
-      "Developer goes from idea to NGN/USDC flow in an afternoon, not a quarter.",
+      "Early-stage. The shape feels right; the provider integrations need real partners to harden.",
     stack: ["TypeScript", "Node.js", "Stellar SDK"],
     highlights: [
       "Provider-agnostic adapter pattern",
-      "Typed SDK with thin runtime",
-      "Quoted-rate locking",
+      "Typed SDK surface",
+      "Quote-rate locking on the type level",
     ],
-    status: "active",
+    status: "prototype",
     year: "2026",
     repo: "https://github.com/BigJohn-dev/NairaRamp-",
     demo: null,
     accent: "#ff5b2e",
-    tags: ["SDK", "Fintech", "Nigeria"],
+    tags: ["SDK", "TypeScript", "Stellar"],
   },
+
+  // ───────── Earlier: learning-phase projects ─────────
   {
-    slug: "agrostella",
-    name: "AgroStella",
-    oneLiner: "Tokenized invoices that finance the African farmer.",
+    slug: "wallet-system",
+    name: "Wallet System",
+    oneLiner:
+      "A digital wallet for storing payment info, tracking transactions, and basic budgeting.",
     problem:
-      "Smallholder farmers across Nigeria sell on credit and wait 30-90 days for buyers to pay. Working capital lives in receivables nobody will discount.",
+      "I wanted a project that touched a bunch of things at once — auth, persistence, transactions, money math, validation. A wallet was the perfect excuse.",
     approach:
-      "Invoices become Stellar-issued tokens that micro-lenders can buy at a discount and buyers redeem at maturity. Liquidity meets the receivable.",
+      "Backend in Python with a clean separation of accounts, transactions, and budgets. Added simple budgeting tools, transaction history, and rewards tracking on top.",
     outcome:
-      "Farmers get paid faster. Buyers extend terms without strangling the supply chain.",
-    stack: ["TypeScript", "Stellar SDK", "Next.js"],
+      "Solidified the basics of API design, money handling (never floats), and writing tests that actually catch off-by-one bugs.",
+    stack: ["Python", "PostgreSQL", "REST"],
     highlights: [
-      "Invoice → token issuance pipeline",
-      "Buyer / lender / farmer roles",
-      "Maturity-gated redemption",
+      "Cleanly separated domain model",
+      "Money handled with integer minor units",
+      "Transaction history + simple budget primitives",
     ],
-    status: "active",
-    year: "2026",
-    repo: "https://github.com/BigJohn-dev/AgroStella-",
+    status: "learning",
+    year: "2025",
+    repo: "https://github.com/BigJohn-org",
     demo: null,
     accent: "#9ad27a",
-    tags: ["AgriTech", "Stellar", "Tokenization"],
+    tags: ["Backend", "Python", "Fundamentals"],
   },
   {
-    slug: "my-devboard",
-    name: "DevBoard",
-    oneLiner: "Self-hostable command center for your dev tools.",
+    slug: "todo-manager",
+    name: "ToDo Task Manager",
+    oneLiner:
+      "A smart to-do app with priorities, deadlines, and shared lists.",
     problem:
-      "PRs in GitHub, deploys in Vercel, tickets in Jira, incidents in PagerDuty, uptime in Better Stack — the modern dev's attention is fragmented across a dozen tabs.",
+      "Classic project — but I used it to dig into the small things that make a CRUD app feel good: deadline reminders, priority sorting, collaborative sharing.",
     approach:
-      "A self-hostable Next.js dashboard with pluggable widgets: GitHub PRs, CI status, Vercel deploys, uptime monitors. One surface, one auth, your own host.",
+      "Full-stack: simple backend with auth + a small frontend. The whole point was to make it actually pleasant to use, not just functional.",
     outcome:
-      "A single morning glance replaces eight tab-switches.",
-    stack: ["TypeScript", "Next.js", "Tailwind", "Docker"],
+      "Helped me internalize how much of a 'simple' app is actually about the edges — empty states, loading states, what happens when two people edit the same task.",
+    stack: ["JavaScript", "Node.js", "MongoDB"],
     highlights: [
-      "Pluggable widget architecture",
-      "Self-host friendly (Docker)",
-      "OAuth across providers",
+      "Priority + deadline sorting",
+      "Collaborative sharing",
+      "Built end-to-end as a solo project",
     ],
-    status: "prototype",
-    year: "2026",
-    repo: "https://github.com/BigJohn-dev/My-dev_board",
+    status: "learning",
+    year: "2025",
+    repo: "https://github.com/BigJohn-org",
     demo: null,
     accent: "#efece4",
-    tags: ["Developer Tools", "Next.js", "Self-hosted"],
+    tags: ["Full Stack", "JavaScript"],
+  },
+  {
+    slug: "movie-explorer",
+    name: "Movie Explorer",
+    oneLiner: "Browse, search, and discover movies — ratings and reviews.",
+    problem:
+      "I wanted a project that actually called external APIs and handled the messy real-world data that comes back.",
+    approach:
+      "React frontend that talks to The Movie Database (TMDb) API. Search, filtering, detail pages, the basics.",
+    outcome:
+      "Got more comfortable with React state, debouncing, pagination, and dealing with APIs that don't always return what you expected.",
+    stack: ["React", "JavaScript", "TMDb API"],
+    highlights: [
+      "Debounced search",
+      "Detail + listing pages",
+      "Real API integration",
+    ],
+    status: "learning",
+    year: "2024",
+    repo: "https://github.com/BigJohn-org",
+    demo: null,
+    accent: "#5c8dff",
+    tags: ["Frontend", "React"],
+  },
+  {
+    slug: "calculator",
+    name: "Simple Calculator",
+    oneLiner: "Basic arithmetic — but cleanly built.",
+    problem:
+      "Day-one project. Made me think about parsing input, edge cases (divide-by-zero, decimals), and keeping a UI honest about state.",
+    approach:
+      "Vanilla JS / HTML / CSS. The fun was in keeping it small and tidy — the kind of code I can read a year later without flinching.",
+    outcome:
+      "A clean, working calculator. The point was less the calculator and more the discipline of finishing.",
+    stack: ["JavaScript", "HTML", "CSS"],
+    highlights: ["Edge-case-aware input parsing", "Tidy, readable code"],
+    status: "archived",
+    year: "2024",
+    repo: "https://github.com/BigJohn-org",
+    demo: null,
+    accent: "#8b8d94",
+    tags: ["JavaScript", "Fundamentals"],
   },
 ];
 
 export const comingSoon = {
   slug: "omnist",
   name: "OMNIST",
-  category: "Communication OS",
+  category: "Communication OS · Concept",
   status: "In Concept · 2026",
   pitch:
-    "An intelligent orchestration layer above WhatsApp, Slack, Telegram, iMessage — and below the human relationships those apps are pretending to serve.",
+    "An intelligent orchestration layer that sits above WhatsApp, Slack, Telegram, iMessage — and below the relationships those apps are pretending to serve.",
   longPitch:
-    "Today's messaging is app-centric: one inbox per silo, no shared memory, no semantic understanding of who matters and why. Omnist treats messaging as an operating system service. Conversations, contacts, intents, and context become first-class — apps become drivers underneath.",
+    "Today's messaging is app-centric: one inbox per silo, no shared memory, no understanding of who actually matters. The idea behind Omnist is to treat messaging as an OS service — conversations, contacts, intents, and context become first-class, and the apps become drivers underneath. It's still very much a concept I'm sketching out; nothing is shipped yet.",
   pillars: [
     {
-      title: "Unified surface",
-      body: "All messaging silos behind one interface. Threads merge by person, not by app.",
+      title: "One surface",
+      body: "All messaging silos behind a single interface. Threads merge by person, not by app.",
     },
     {
-      title: "Contextual memory",
-      body: "Every conversation remembers what was said, agreed, promised. The OS holds the rope, you don't.",
+      title: "Memory",
+      body: "Conversations remember what was said, agreed, promised. The OS holds the rope, you don't.",
     },
     {
-      title: "Predictive intent",
-      body: "Replies, follow-ups, and meeting-scheduling suggested before you reach for them — never sent without you.",
+      title: "Suggestion, not automation",
+      body: "Drafts and follow-ups suggested before you reach for them — never sent without you.",
     },
     {
-      title: "Relationship graph",
-      body: "A first-class model of who matters, signal vs. noise, with privacy-preserving inference local-first.",
+      title: "Who matters",
+      body: "A first-class model of signal vs. noise, with privacy-preserving inference kept local.",
     },
   ],
   capabilities: [
     "Cross-platform message orchestration",
     "Local-first relationship graph",
-    "Contextual reply generation",
+    "Contextual reply drafting",
     "Meeting / commitment extraction",
     "Latency-aware presence model",
     "End-to-end-respecting routing",

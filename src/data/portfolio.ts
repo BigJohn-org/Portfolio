@@ -1,6 +1,7 @@
 /**
  * Single source of truth for personal data.
- * Real fields wired from GitHub + Semicolon context.
+ * Voice matches Imeobong's live self-description: junior software engineer,
+ * craft-focused, learning out loud, plus personal interests.
  * Fields marked TODO are waiting on confirmation — safe to edit inline.
  */
 
@@ -20,19 +21,18 @@ export const portfolioData = {
   personal: {
     name: "Imeobong John",
     fullName: "Imeobong John Abasiediedu",
-    role: "Full-Stack Engineer · Stellar / Soroban",
-    tagline: "Building African fintech infrastructure on Stellar.",
-    bio: "Full-stack engineer building African fintech infrastructure on the Stellar network. I design payment rails, Soroban smart contracts, and the interfaces that make them feel inevitable — from USSD wallet gateways to tokenized rotating-savings groups.",
+    role: "Junior Software Engineer",
+    tagline: "Building clean, reliable, and practical software — one commit at a time.",
+    bio: "I'm a junior software engineer focused on building clean, reliable, and practical digital solutions. I work with Python, Java, JavaScript, Go, and modern web technologies — building APIs, full-stack applications, and small tools that solve concrete problems.",
     subBio:
-      "Trained at Semicolon Africa across backend systems, object-oriented design, and collaborative delivery. I work across Rust (Soroban), TypeScript / Next.js, Go, and Python — and ship original products that solve concrete problems for Nigerian and African users.",
-    location: "Lagos, Nigeria", // TODO: confirm exact city
-    statusBadge: "Open to senior frontend / fintech engineering roles",
+      "I trained at Semicolon Africa, where I worked through backend systems, object-oriented programming, system design, and collaborative software delivery. Lately I've also been exploring the Stellar ecosystem — writing Soroban smart contracts and building small products around them as I learn.",
+    location: "Lagos, Nigeria",
+    statusBadge: "Open to junior / mid software engineering roles",
     image: "/imeobong.jpg",
-    availability: "available", // "available" | "limited" | "closed"
+    availability: "available",
   },
 
-  // TODO: replace placeholder URLs once user confirms full socials list.
-  // Real ones inferred from GitHub profile (BigJohn-dev has LinkedIn, X, Gmail, YouTube, Instagram listed).
+  // Real ones inferred from GitHub profile. TODO marks fields awaiting user confirmation.
   socials: {
     email: "imeobongjohn38@gmail.com",
     github: {
@@ -47,7 +47,7 @@ export const portfolioData = {
     } satisfies Social,
     linkedin: {
       label: "LinkedIn",
-      handle: null, // TODO
+      handle: null, // TODO: confirm exact URL slug
       url: "https://www.linkedin.com/in/imeobong-john/",
     } satisfies Social,
     twitter: {
@@ -71,48 +71,71 @@ export const portfolioData = {
   ],
 
   skills: [
-    { name: "Rust", family: "language", weight: 3 },
-    { name: "TypeScript", family: "language", weight: 3 },
+    { name: "Python", family: "language", weight: 3 },
+    { name: "Java", family: "language", weight: 3 },
+    { name: "JavaScript", family: "language", weight: 3 },
+    { name: "TypeScript", family: "language", weight: 2 },
     { name: "Go", family: "language", weight: 2 },
-    { name: "Python", family: "language", weight: 2 },
-    { name: "Java", family: "language", weight: 1 },
-    { name: "Next.js", family: "framework", weight: 3 },
+    { name: "Rust", family: "language", weight: 1 },
     { name: "React", family: "framework", weight: 3 },
+    { name: "Next.js", family: "framework", weight: 3 },
     { name: "Node.js", family: "framework", weight: 2 },
-    { name: "NestJS", family: "framework", weight: 1 },
     { name: "Tailwind", family: "framework", weight: 2 },
-    { name: "Soroban", family: "blockchain", weight: 3 },
-    { name: "Stellar SDK", family: "blockchain", weight: 3 },
-    { name: "Smart Contracts", family: "blockchain", weight: 2 },
+    { name: "Express", family: "framework", weight: 2 },
+    { name: "NestJS", family: "framework", weight: 1 },
+    { name: "Soroban", family: "blockchain", weight: 1 },
+    { name: "Stellar SDK", family: "blockchain", weight: 1 },
+    { name: "MySQL", family: "infra", weight: 2 },
     { name: "Postgres", family: "infra", weight: 2 },
-    { name: "MySQL", family: "infra", weight: 1 },
-    { name: "Redis", family: "infra", weight: 1 },
-    { name: "Docker", family: "infra", weight: 2 },
-    { name: "Vercel", family: "infra", weight: 2 },
+    { name: "MongoDB", family: "infra", weight: 1 },
+    { name: "Docker", family: "infra", weight: 1 },
     { name: "Git", family: "tool", weight: 3 },
-    { name: "Figma", family: "tool", weight: 1 },
+    { name: "Linux", family: "tool", weight: 2 },
   ] satisfies Skill[],
 
+  // Rotating taglines in the hero — voice should sound like the developer's, not a startup deck.
   taglines: [
-    "Engineering rails the financial system forgot.",
-    "Soroban contracts. Real users. Daily commits.",
-    "Building like the next billion are watching.",
-    "Wallets that work without internet.",
-    "Tokenizing trust, one Ajo at a time.",
+    "Steady commits over loud launches.",
+    "Currently learning Soroban out loud.",
+    "Clarity > cleverness.",
+    "Backend muscle. Frontend curiosity.",
+    "Small tools, real users.",
   ],
 
+  // Craft principles, not founder principles.
   philosophy: [
     {
-      heading: "Infrastructure before interface.",
-      body: "I build payment rails first — wallets, contracts, settlement — then earn the right to design the surface. The interface is the receipt of the system underneath.",
+      heading: "Clarity over cleverness.",
+      body: "I'd rather write the boring, well-named version of something than the clever one-liner that needs a paragraph of comments. Future-me has to read this code.",
     },
     {
-      heading: "Africa-first, not Africa-last.",
-      body: "Most fintech assumes a smartphone, a debit card, and reliable internet. I design for the inverse: feature phones, intermittent connectivity, cash-first behaviour. The constraints make the work harder and the product more honest.",
+      heading: "Ship the boring middle.",
+      body: "The muscle isn't built in the launch — it's built in the steady commits that don't make a post. I show up daily and that compounds.",
     },
     {
-      heading: "Ship original work.",
-      body: "75 repositories, mostly original concepts — USSD-Stellar gateways, tokenized rotating-savings, NGN/USDC SDKs. Every project answers a question I actually wanted answered.",
+      heading: "Learn in public.",
+      body: "I post my repos as I figure things out. The Stellar / Soroban work, the small experiments, the calculator I built on day one — all of it stays up. The journey is part of the work.",
     },
+  ],
+
+  // Personal — gaming, sci-fi, problem-solving — from the live site.
+  interests: [
+    { label: "Gaming", note: "Strategy and RPGs. Currently working through whatever has a good story." },
+    { label: "Sci-fi films", note: "Anything with a serious take on time, scale, or intelligence." },
+    { label: "Problem-solving", note: "LeetCode-shaped on slow days; system-design-shaped on the rest." },
+    { label: "Reading", note: "Mostly engineering blogs and the occasional long-form essay." },
+  ],
+
+  quote: {
+    text: "Code is like humor. When you have to explain it, it's bad.",
+    author: "Cory House",
+  },
+
+  // What I'm focused on right now — keeps the page feeling current.
+  nowFocus: [
+    "Writing Soroban contracts for small fintech experiments",
+    "Getting more comfortable with Go for backend services",
+    "Sharpening system-design fundamentals",
+    "Contributing to open-source Stellar projects",
   ],
 } as const;
