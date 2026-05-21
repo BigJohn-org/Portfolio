@@ -5,6 +5,8 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import LenisProvider from "@/components/providers/LenisProvider";
 import Noise from "@/components/ui/Noise";
+import IntroSequence from "@/components/ui/IntroSequence";
+import ScrollProgress from "@/components/ui/ScrollProgress";
 import { baseMetadata, personSchema } from "@/lib/seo";
 
 const sans = Inter({
@@ -55,6 +57,8 @@ export default function RootLayout({
         </a>
         <LenisProvider>
           <Noise />
+          <ScrollProgress />
+          <IntroSequence />
           <Header />
           <main id="top">{children}</main>
           <Footer />

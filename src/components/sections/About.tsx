@@ -41,9 +41,9 @@ export default function About() {
           <div>
             <Reveal>
               <h2 className="font-sans text-display-xl font-medium tracking-tightest text-balance">
-                A junior engineer{" "}
+                An engineer who{" "}
                 <span className="display-serif font-normal text-bone/90">
-                  trying to be a better one.
+                  takes the long way.
                 </span>
               </h2>
             </Reveal>

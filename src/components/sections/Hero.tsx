@@ -8,6 +8,7 @@ import SplitText from "@/components/motion/SplitText";
 import Reveal from "@/components/motion/Reveal";
 import Button from "@/components/ui/Button";
 import Tag from "@/components/ui/Tag";
+import PortraitCard from "@/components/ui/PortraitCard";
 
 const HeroCanvas = dynamic(() => import("@/components/three/HeroCanvas"), {
   ssr: false,
@@ -52,19 +53,19 @@ export default function Hero() {
         <div className="mt-12 max-w-[1200px]">
           <Reveal delay={0.15}>
             <p className="eyebrow mb-8">
-              <span className="text-accent">001 — </span>Junior Software Engineer · Lagos
+              <span className="text-accent">001 — </span>Software Engineer · Stellar ecosystem · Lagos
             </p>
           </Reveal>
 
           <h1 className="font-sans text-display-2xl font-medium tracking-tightest text-bone text-balance">
             <SplitText
-              text="Building clean, reliable,"
+              text="Full-stack engineer,"
               as="span"
               className="block"
               delay={0.2}
             />
             <SplitText
-              text="and practical software."
+              text="writing into Stellar."
               as="span"
               className="display-serif block font-normal text-bone/95"
               delay={0.5}
@@ -73,10 +74,10 @@ export default function Hero() {
 
           <Reveal delay={1.1} className="mt-10 grid max-w-3xl grid-cols-1 gap-8 md:grid-cols-[1fr_auto] md:items-end">
             <p className="text-lg leading-relaxed text-bone/75 text-balance">
-              I&apos;m a junior software engineer working with Python, Java,
-              JavaScript, Go, and modern web technologies — building APIs, full-stack
-              apps, and small tools. Lately I&apos;ve also been exploring the Stellar
-              ecosystem and writing Soroban smart contracts as I learn.
+              I work across the web (Next.js, React, TypeScript) and backend (Python,
+              Go, Java), and lately most of my time goes into the Stellar ecosystem —
+              writing Soroban smart contracts in Rust and the small product
+              experiments that sit around them.
             </p>
 
             {/* Rotating tagline */}
@@ -112,8 +113,8 @@ export default function Hero() {
           </Reveal>
         </div>
 
-        {/* Bottom scroll cue + command-line glyph */}
-        <div className="mt-20 grid grid-cols-1 items-end gap-6 md:grid-cols-[1fr_auto]">
+        {/* Bottom row — terminal + portrait */}
+        <div className="mt-16 grid grid-cols-1 items-end gap-6 md:mt-20 md:grid-cols-[1fr_auto] md:gap-10">
           <Reveal delay={1.5}>
             <div className="glass max-w-md rounded-md px-4 py-3 font-mono text-[12px] text-bone/85">
               <span className="text-accent">$</span>{" "}
@@ -121,23 +122,14 @@ export default function Hero() {
               <br />
               <span>imeobong.john</span>{" "}
               <span className="text-steel">
-                — junior engineer, still learning out loud.
+                — engineer · Stellar · Lagos · learning in public.
               </span>
               <span className="ml-1 inline-block h-3 w-[7px] translate-y-[2px] bg-accent animate-pulse" />
             </div>
           </Reveal>
 
-          <Reveal delay={1.7} className="hidden md:block">
-            <div className="flex flex-col items-end gap-2 font-mono text-[10.5px] uppercase tracking-[0.22em] text-steel">
-              <span>scroll</span>
-              <div className="h-12 w-px overflow-hidden">
-                <motion.div
-                  className="h-1/2 w-full bg-bone"
-                  animate={{ y: ["-100%", "200%"] }}
-                  transition={{ duration: 2.4, ease: [0.45, 0, 0.55, 1], repeat: Infinity }}
-                />
-              </div>
-            </div>
+          <Reveal delay={1.7}>
+            <PortraitCard />
           </Reveal>
         </div>
       </div>

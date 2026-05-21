@@ -21,8 +21,8 @@ export default function Footer() {
               Thanks for <span className="text-accent">stopping by</span>.
             </h2>
             <p className="mt-6 max-w-md text-bone/70">
-              Open to junior / mid software engineering roles, open-source
-              collaboration, and conversations with people building thoughtful things.
+              Open to software engineering roles, open-source collaboration, and
+              conversations with people building thoughtful things. Remote-friendly.
             </p>
             <Link
               href={`mailto:${portfolioData.socials.email}`}

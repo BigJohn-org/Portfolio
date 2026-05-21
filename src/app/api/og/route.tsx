@@ -54,7 +54,7 @@ export async function GET() {
               margin: 0,
             }}
           >
-            Junior Software Engineer · Lagos
+            Software Engineer · Stellar ecosystem · Lagos
           </p>
           <h1
             style={{
@@ -66,7 +66,7 @@ export async function GET() {
               maxWidth: 1000,
             }}
           >
-            Building clean, reliable, and practical software.
+            Full-stack engineer, writing into Stellar.
           </h1>
         </div>
 
@@ -83,7 +83,7 @@ export async function GET() {
         >
           <span>Lagos · WAT</span>
           <span style={{ color: "#ff5b2e" }}>
-            ● Open to junior / mid engineering roles
+            ● Open to engineering roles · remote-friendly
           </span>
         </div>
       </div>

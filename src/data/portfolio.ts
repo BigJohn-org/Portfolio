@@ -21,13 +21,13 @@ export const portfolioData = {
   personal: {
     name: "Imeobong John",
     fullName: "Imeobong John Abasiediedu",
-    role: "Junior Software Engineer",
-    tagline: "Building clean, reliable, and practical software — one commit at a time.",
-    bio: "I'm a junior software engineer focused on building clean, reliable, and practical digital solutions. I work with Python, Java, JavaScript, Go, and modern web technologies — building APIs, full-stack applications, and small tools that solve concrete problems.",
+    role: "Software Engineer · Stellar ecosystem · Lagos",
+    tagline: "Engineering software that's honest about what it does.",
+    bio: "I'm a software engineer working across the web (Next.js, React, TypeScript) and backend (Python, Go, Java). I trained at Semicolon Africa, and these days I spend most of my time inside the Stellar ecosystem — writing Soroban smart contracts in Rust and the small product experiments that sit around them.",
     subBio:
-      "I trained at Semicolon Africa, where I worked through backend systems, object-oriented programming, system design, and collaborative software delivery. Lately I've also been exploring the Stellar ecosystem — writing Soroban smart contracts and building small products around them as I learn.",
+      "I'm still early in my career, and that's the point: this site is the work in motion, not the finished résumé. I commit daily, I learn in public, and I try to build the version of each thing that's clear enough to read a year later without flinching.",
     location: "Lagos, Nigeria",
-    statusBadge: "Open to junior / mid software engineering roles",
+    statusBadge: "Open to software engineering roles · remote-friendly",
     image: "/imeobong.jpg",
     availability: "available",
   },
@@ -93,13 +93,13 @@ export const portfolioData = {
     { name: "Linux", family: "tool", weight: 2 },
   ] satisfies Skill[],
 
-  // Rotating taglines in the hero — voice should sound like the developer's, not a startup deck.
+  // Rotating taglines in the hero — confident, factual, not founder-deck.
   taglines: [
-    "Steady commits over loud launches.",
-    "Currently learning Soroban out loud.",
-    "Clarity > cleverness.",
-    "Backend muscle. Frontend curiosity.",
-    "Small tools, real users.",
+    "Writing into the Stellar ecosystem.",
+    "Backend in Go and Python. Frontend in Next.",
+    "Soroban contracts, written out loud.",
+    "Clarity over cleverness — every commit.",
+    "Available for serious engineering work.",
   ],
 
   // Craft principles, not founder principles.

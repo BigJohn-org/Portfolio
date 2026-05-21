@@ -48,9 +48,9 @@ export default function Contact() {
             </Reveal>
             <Reveal delay={0.1}>
               <p className="mt-6 max-w-md text-bone/65 leading-relaxed">
-                I&apos;m looking for junior or mid software engineering roles, open-source
-                projects to contribute to, and interesting people to learn from.
-                If any of those sound like you — drop a line.
+                Open to software engineering roles (remote-friendly), open-source
+                collaboration, and conversations with people building thoughtful
+                things. Drop a line.
               </p>
             </Reveal>
 
