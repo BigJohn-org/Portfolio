@@ -3,9 +3,12 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { portfolioData } from "@/data/portfolio";
+import { media } from "@/data/media";
 import Reveal from "@/components/motion/Reveal";
 import Marquee from "@/components/motion/Marquee";
+import Scroll3D from "@/components/motion/Scroll3D";
 import Tag from "@/components/ui/Tag";
+import Cinematic from "@/components/ui/Cinematic";
 
 const stats = [
   { value: "75+", label: "public repositories" },
@@ -37,7 +40,7 @@ export default function About() {
           </p>
         </Reveal>
 
-        <div className="grid grid-cols-1 gap-12 lg:grid-cols-[1.2fr_1fr] lg:gap-20">
+        <div className="grid grid-cols-1 items-start gap-12 lg:grid-cols-[1.3fr_1fr] lg:gap-20">
           <div>
             <Reveal>
               <h2 className="font-sans text-display-xl font-medium tracking-tightest text-balance">
@@ -61,25 +64,96 @@ export default function About() {
             </Reveal>
           </div>
 
-          {/* Philosophy stack */}
-          <div className="space-y-px overflow-hidden rounded-2xl border border-bone/10 bg-bone/[0.02]">
-            {portfolioData.philosophy.map((p, i) => (
-              <Reveal key={p.heading} delay={i * 0.08}>
-                <div className="group relative bg-ink p-7 transition-colors duration-600 ease-glide hover:bg-bone/[0.03]">
-                  <div className="flex items-baseline gap-4">
-                    <span className="font-mono text-[10.5px] uppercase tracking-[0.22em] text-accent">
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
-                    <h3 className="font-serif text-2xl italic text-bone">
-                      {p.heading}
-                    </h3>
-                  </div>
-                  <p className="mt-4 max-w-md text-bone/65 leading-relaxed">
-                    {p.body}
-                  </p>
+          {/* Cinematic portrait plate with 3D scroll-in */}
+          <Scroll3D mode="enter" rotate={12} translateZ={120} scaleMin={0.94}>
+            <div className="relative mx-auto w-full max-w-sm lg:max-w-none">
+              <Cinematic
+                src={media.about.src}
+                kind={media.about.kind}
+                alt={media.about.alt}
+                tone={media.about.tone}
+                aspect={media.about.aspect}
+                parallax={media.about.parallax}
+                caption={media.about.caption}
+              />
+              {/* Specimen labels */}
+              <div className="absolute -top-3 left-4 inline-flex items-center gap-2 rounded-full glass-strong px-3 py-1">
+                <span className="size-1.5 rounded-full bg-accent" />
+                <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-bone/80">
+                  ⌘ subject · I.J.A
+                </span>
+              </div>
+              <div className="absolute -bottom-3 right-4 inline-flex items-center gap-2 rounded-full glass-strong px-3 py-1">
+                <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-bone/80">
+                  frame · 001 / 256
+                </span>
+              </div>
+            </div>
+          </Scroll3D>
+        </div>
+
+        {/* Philosophy — promoted to full-width 3-column row */}
+        <div className="mt-20 grid grid-cols-1 gap-px overflow-hidden rounded-2xl border border-bone/10 bg-bone/10 md:grid-cols-3">
+          {portfolioData.philosophy.map((p, i) => (
+            <Reveal key={p.heading} delay={i * 0.08}>
+              <div className="group relative h-full bg-ink p-7 transition-colors duration-600 ease-glide hover:bg-bone/[0.03]">
+                <div className="flex items-baseline gap-4">
+                  <span className="font-mono text-[10.5px] uppercase tracking-[0.22em] text-accent">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <h3 className="font-serif text-2xl italic text-bone">
+                    {p.heading}
+                  </h3>
                 </div>
-              </Reveal>
-            ))}
+                <p className="mt-4 text-bone/65 leading-relaxed">
+                  {p.body}
+                </p>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+
+        {/* B-side frame — engineer at the rig */}
+        <div className="mt-16 grid grid-cols-1 gap-8 md:mt-24 md:grid-cols-[1fr_1.4fr] md:items-center md:gap-14">
+          <Scroll3D mode="enter" rotate={10} translateZ={100} scaleMin={0.94}>
+            <div className="relative mx-auto w-full max-w-md md:max-w-none">
+              <Cinematic
+                src={media.workspace.src}
+                kind={media.workspace.kind}
+                alt={media.workspace.alt}
+                tone={media.workspace.tone}
+                aspect={media.workspace.aspect}
+                parallax={media.workspace.parallax}
+                caption={media.workspace.caption}
+                grainOpacity={0.32}
+              />
+              <div className="absolute -top-3 right-4 inline-flex items-center gap-2 rounded-full glass-strong px-3 py-1">
+                <span className="size-1.5 rounded-full bg-signal" />
+                <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-bone/80">
+                  B-side · in the field
+                </span>
+              </div>
+            </div>
+          </Scroll3D>
+          <div>
+            <Reveal>
+              <p className="eyebrow mb-5">// from the field</p>
+            </Reveal>
+            <Reveal>
+              <h3 className="font-sans text-display-md font-medium tracking-tightest text-bone text-balance">
+                Most of the work{" "}
+                <span className="display-serif font-normal text-bone/90">
+                  happens here.
+                </span>
+              </h3>
+            </Reveal>
+            <Reveal delay={0.1}>
+              <p className="mt-5 max-w-md text-bone/65 leading-relaxed">
+                The Hacker House, late nights, two screens, headphones on — most of
+                what shipped this year was written somewhere that looked like this.
+                Quiet work, steady commits, the boring middle.
+              </p>
+            </Reveal>
           </div>
         </div>
 

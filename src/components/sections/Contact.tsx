@@ -3,8 +3,10 @@
 import { useState, FormEvent } from "react";
 import { motion } from "framer-motion";
 import { portfolioData } from "@/data/portfolio";
+import { media } from "@/data/media";
 import Reveal from "@/components/motion/Reveal";
 import Button from "@/components/ui/Button";
+import Cinematic from "@/components/ui/Cinematic";
 
 export default function Contact() {
   const [name, setName] = useState("");
@@ -54,26 +56,42 @@ export default function Contact() {
               </p>
             </Reveal>
 
-            <div className="mt-12 space-y-4">
-              <ContactLine
-                label="Email"
-                value={portfolioData.socials.email}
-                href={`mailto:${portfolioData.socials.email}`}
-              />
-              <ContactLine
-                label="GitHub"
-                value={portfolioData.socials.github.handle ?? ""}
-                href={portfolioData.socials.github.url}
-              />
-              <ContactLine
-                label="LinkedIn"
-                value={portfolioData.socials.linkedin.url.replace(/https?:\/\//, "")}
-                href={portfolioData.socials.linkedin.url}
-              />
-              <ContactLine
-                label="Location"
-                value={`${portfolioData.personal.location} · WAT (UTC+1)`}
-              />
+            <div className="mt-12 grid grid-cols-1 items-end gap-8 sm:grid-cols-[1fr_auto]">
+              <div className="space-y-4">
+                <ContactLine
+                  label="Email"
+                  value={portfolioData.socials.email}
+                  href={`mailto:${portfolioData.socials.email}`}
+                />
+                <ContactLine
+                  label="GitHub"
+                  value={portfolioData.socials.github.handle ?? ""}
+                  href={portfolioData.socials.github.url}
+                />
+                <ContactLine
+                  label="LinkedIn"
+                  value={portfolioData.socials.linkedin.url.replace(/https?:\/\//, "")}
+                  href={portfolioData.socials.linkedin.url}
+                />
+                <ContactLine
+                  label="Location"
+                  value={`${portfolioData.personal.location} · WAT (UTC+1)`}
+                />
+              </div>
+
+              {/* Small cinematic accent — the "person you're emailing" */}
+              <div className="hidden w-32 shrink-0 sm:block">
+                <Cinematic
+                  src={media.contact.src}
+                  kind={media.contact.kind}
+                  alt={media.contact.alt}
+                  tone={media.contact.tone}
+                  aspect={media.contact.aspect}
+                  parallax={media.contact.parallax}
+                  rounded="rounded-xl"
+                  grainOpacity={0.3}
+                />
+              </div>
             </div>
           </div>
 

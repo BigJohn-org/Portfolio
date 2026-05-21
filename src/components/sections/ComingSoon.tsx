@@ -3,8 +3,11 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { comingSoon } from "@/data/projects";
+import { media } from "@/data/media";
 import Reveal from "@/components/motion/Reveal";
+import Scroll3D from "@/components/motion/Scroll3D";
 import Tag from "@/components/ui/Tag";
+import Cinematic from "@/components/ui/Cinematic";
 
 export default function ComingSoon() {
   const ref = useRef<HTMLElement>(null);
@@ -108,6 +111,80 @@ export default function ComingSoon() {
               </div>
             </Reveal>
           ))}
+        </div>
+
+        {/* Concept reel — portrait video, centered for a film-reel feel */}
+        <div className="mt-24">
+          <Reveal>
+            <div className="mb-5 flex items-end justify-between">
+              <p className="eyebrow">// concept reel · 2026</p>
+              <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-steel">
+                no audio · loop · vertical reel
+              </p>
+            </div>
+          </Reveal>
+          <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-[1fr_auto_1fr]">
+            {/* Left specs column */}
+            <div className="hidden flex-col items-end gap-3 lg:flex">
+              <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-steel">
+                ⌘ format
+              </p>
+              <p className="text-right font-serif italic text-bone/80">
+                Vertical · 424 × 642
+              </p>
+              <p className="mt-4 font-mono text-[10px] uppercase tracking-[0.22em] text-steel">
+                ⌘ runtime
+              </p>
+              <p className="text-right font-serif italic text-bone/80">
+                Loop · no audio
+              </p>
+            </div>
+
+            {/* Reel */}
+            <Scroll3D mode="enter" rotate={14} translateZ={140} scaleMin={0.94}>
+              <div className="relative mx-auto w-full max-w-xs md:max-w-sm">
+                <Cinematic
+                  src={media.omnist.src}
+                  kind={media.omnist.kind}
+                  alt={media.omnist.alt}
+                  tone={media.omnist.tone}
+                  aspect={media.omnist.aspect}
+                  parallax={media.omnist.parallax}
+                  grainOpacity={0.32}
+                  rounded="rounded-3xl"
+                />
+                {/* Floating reel marker */}
+                <div className="pointer-events-none absolute left-3 top-3 inline-flex items-center gap-2 rounded-full glass-strong px-3 py-1.5">
+                  <span className="relative inline-flex size-2">
+                    <span className="absolute inset-0 rounded-full bg-accent" />
+                    <span className="absolute inset-0 animate-ping rounded-full bg-accent/60" />
+                  </span>
+                  <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-bone">
+                    REC · OMNIST
+                  </span>
+                </div>
+                <div className="pointer-events-none absolute right-3 top-3 rounded-full glass-strong px-3 py-1 font-mono text-[10px] uppercase tracking-[0.2em] text-bone">
+                  9:16
+                </div>
+              </div>
+            </Scroll3D>
+
+            {/* Right specs column */}
+            <div className="hidden flex-col gap-3 lg:flex">
+              <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-steel">
+                ⌘ stage
+              </p>
+              <p className="font-serif italic text-bone/80">
+                In concept · 2026
+              </p>
+              <p className="mt-4 font-mono text-[10px] uppercase tracking-[0.22em] text-steel">
+                ⌘ classification
+              </p>
+              <p className="font-serif italic text-bone/80">
+                Communication OS
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </section>

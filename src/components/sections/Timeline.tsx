@@ -3,7 +3,10 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { journey, type Milestone } from "@/data/experience";
+import { media } from "@/data/media";
 import Reveal from "@/components/motion/Reveal";
+import Scroll3D from "@/components/motion/Scroll3D";
+import Cinematic from "@/components/ui/Cinematic";
 import { cn } from "@/lib/cn";
 
 const kindLabel: Record<Milestone["kind"], string> = {
@@ -52,6 +55,31 @@ export default function Timeline() {
               Nothing dramatic, just steady steps.
             </p>
           </Reveal>
+        </div>
+
+        {/* Cinematic frame between intro + chronology */}
+        <div className="mb-20">
+          <Scroll3D mode="enter" rotate={10} translateZ={100} scaleMin={0.94}>
+            <div className="relative mx-auto max-w-4xl">
+              <Cinematic
+                src={media.journey.src}
+                kind={media.journey.kind}
+                alt={media.journey.alt}
+                tone={media.journey.tone}
+                aspect={media.journey.aspect}
+                parallax={media.journey.parallax}
+                rounded="rounded-3xl"
+                caption={media.journey.caption}
+                grainOpacity={0.3}
+              />
+              <div className="pointer-events-none absolute left-4 top-4 inline-flex items-center gap-2 rounded-full glass-strong px-3 py-1.5">
+                <span className="size-1.5 rounded-full bg-signal" />
+                <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-bone">
+                  field · 2026 · Lagos
+                </span>
+              </div>
+            </div>
+          </Scroll3D>
         </div>
 
         <div ref={ref} className="relative pl-6 md:pl-12">

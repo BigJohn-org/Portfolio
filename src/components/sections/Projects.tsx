@@ -1,7 +1,10 @@
 "use client";
 
 import { projects } from "@/data/projects";
+import { media } from "@/data/media";
 import Reveal from "@/components/motion/Reveal";
+import Scroll3D from "@/components/motion/Scroll3D";
+import Cinematic from "@/components/ui/Cinematic";
 import ProjectCase from "./ProjectCase";
 
 export default function Projects() {
@@ -35,7 +38,38 @@ export default function Projects() {
           </Reveal>
         </div>
 
-        <div className="mt-16 divide-y divide-bone/10">
+        {/* Cinematic header frame */}
+        <div className="mt-14">
+          <Scroll3D mode="enter" rotate={12} translateZ={120} scaleMin={0.95}>
+            <div className="relative">
+              <Cinematic
+                src={media.projects.src}
+                kind={media.projects.kind}
+                alt={media.projects.alt}
+                tone={media.projects.tone}
+                aspect={media.projects.aspect}
+                parallax={media.projects.parallax}
+                rounded="rounded-3xl"
+                grainOpacity={0.28}
+                caption={media.projects.caption}
+              />
+              <div className="pointer-events-none absolute left-4 top-4 inline-flex items-center gap-2 rounded-full glass-strong px-3 py-1.5">
+                <span className="relative inline-flex size-2">
+                  <span className="absolute inset-0 rounded-full bg-accent" />
+                  <span className="absolute inset-0 animate-ping rounded-full bg-accent/60" />
+                </span>
+                <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-bone">
+                  the work · 003
+                </span>
+              </div>
+              <div className="pointer-events-none absolute right-4 bottom-4 rounded-full glass-strong px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.2em] text-bone">
+                07 projects below
+              </div>
+            </div>
+          </Scroll3D>
+        </div>
+
+        <div className="mt-12 divide-y divide-bone/10">
           {projects.map((p, i) => (
             <ProjectCase key={p.slug} project={p} index={i} />
           ))}

@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { useRef } from "react";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
@@ -21,7 +21,16 @@ export default function ProjectCase({
     target: ref,
     offset: ["start end", "end start"],
   });
-  const y = useTransform(scrollYProgress, [0, 1], ["8%", "-8%"]);
+  const smooth = useSpring(scrollYProgress, {
+    stiffness: 180,
+    damping: 28,
+    mass: 0.5,
+  });
+  const y = useTransform(smooth, [0, 1], ["8%", "-8%"]);
+  // 3D scroll-on: card lifts toward camera as it enters viewport.
+  const rotateX = useTransform(smooth, [0, 0.45, 1], [16, 0, -8]);
+  const z = useTransform(smooth, [0, 0.45, 1], [-100, 0, -40]);
+  const cardScale = useTransform(smooth, [0, 0.45, 1], [0.94, 1, 0.97]);
 
   const isReverse = index % 2 === 1;
 
@@ -29,6 +38,7 @@ export default function ProjectCase({
     <article
       ref={ref}
       className="relative grid grid-cols-1 gap-10 py-16 md:py-24 lg:grid-cols-12 lg:gap-12"
+      style={{ perspective: "1400px" }}
     >
       {/* Mockup column */}
       <div
@@ -39,8 +49,16 @@ export default function ProjectCase({
       >
         <Reveal>
           <motion.div
-            style={{ y }}
-            className="group relative aspect-[16/11] overflow-hidden rounded-2xl border border-bone/10 bg-smoke"
+            style={{
+              y,
+              rotateX,
+              z,
+              scale: cardScale,
+              transformStyle: "preserve-3d",
+              transformOrigin: "50% 100%",
+              willChange: "transform",
+            }}
+            className="group relative aspect-[16/11] overflow-hidden rounded-2xl border border-bone/10 bg-smoke shadow-[0_30px_80px_-20px_rgba(0,0,0,0.7)]"
           >
             {/* Stylized device frame mockup */}
             <div className="absolute inset-0 grid-bg opacity-50" />
