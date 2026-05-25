@@ -6,12 +6,10 @@ export type Milestone = {
   kind: "education" | "work" | "build" | "milestone";
   body: string;
   highlights?: string[];
-  editable?: boolean; // marks fields the user should confirm
 };
 
 /**
- * Honest chronology. Semicolon Africa is confirmed; other rows are
- * structured for easy edit — marked `editable: true` where they need user input.
+ * Honest chronology of the path so far.
  */
 export const journey: Milestone[] = [
   {
@@ -48,14 +46,5 @@ export const journey: Milestone[] = [
     kind: "build",
     body: "Worked through the basics across Python, JavaScript, and Java by building small things end-to-end — a wallet system, a to-do manager, a movie explorer, a URL shortener, a Bible search app, a chat room. The point was to finish each one, not to make them famous.",
     highlights: ["Python / JS / Java", "Full-stack basics"],
-    editable: true,
-  },
-  {
-    year: "TBD",
-    title: "Secondary / pre-university",
-    org: "TODO: confirm school + years",
-    kind: "education",
-    body: "Placeholder. Add your secondary school and any pre-university programs here.",
-    editable: true,
   },
 ];

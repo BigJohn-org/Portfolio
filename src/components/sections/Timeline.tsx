@@ -158,12 +158,6 @@ function MilestoneRow({
               ))}
             </div>
           )}
-
-          {milestone.editable && (
-            <p className="mt-3 font-mono text-[10px] uppercase tracking-[0.18em] text-accent/80">
-              ⚑ editable — update in src/data/experience.ts
-            </p>
-          )}
         </div>
       </div>
     </Reveal>
