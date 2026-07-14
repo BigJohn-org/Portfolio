@@ -6,9 +6,9 @@ export default function Footer() {
   const year = new Date().getFullYear();
   const socials = [
     portfolioData.socials.github,
+    portfolioData.socials.org,
     portfolioData.socials.linkedin,
-    portfolioData.socials.twitter,
-    portfolioData.socials.youtube,
+    portfolioData.socials.onlydust,
   ];
 
   return (
@@ -16,9 +16,9 @@ export default function Footer() {
       <div className="container-editorial py-16">
         <div className="flex flex-col gap-12 lg:flex-row lg:items-end lg:justify-between">
           <div>
-            <p className="eyebrow mb-6">// end of page</p>
+            <p className="eyebrow mb-6">// end of transmission</p>
             <h2 className="font-serif text-display-lg italic text-balance">
-              Thanks for <span className="text-accent">stopping by</span>.
+              Thanks for <span className="text-accent text-glow-cyan">flying through</span>.
             </h2>
             <p className="mt-6 max-w-md text-bone/70">
               Open to software engineering roles, open-source collaboration, and

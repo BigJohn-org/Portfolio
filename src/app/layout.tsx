@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Instrument_Serif, JetBrains_Mono } from "next/font/google";
+import { Space_Grotesk, Instrument_Serif, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
@@ -7,9 +7,11 @@ import LenisProvider from "@/components/providers/LenisProvider";
 import Noise from "@/components/ui/Noise";
 import IntroSequence from "@/components/ui/IntroSequence";
 import ScrollProgress from "@/components/ui/ScrollProgress";
+import CustomCursor from "@/components/ui/CustomCursor";
+import Universe from "@/components/ui/Universe";
 import { baseMetadata, personSchema } from "@/lib/seo";
 
-const sans = Inter({
+const sans = Space_Grotesk({
   subsets: ["latin"],
   variable: "--font-sans",
   display: "swap",
@@ -31,7 +33,7 @@ const mono = JetBrains_Mono({
 export const metadata: Metadata = baseMetadata;
 
 export const viewport: Viewport = {
-  themeColor: "#0a0a0b",
+  themeColor: "#050505",
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
@@ -56,9 +58,11 @@ export default function RootLayout({
           Skip to content
         </a>
         <LenisProvider>
+          <Universe />
           <Noise />
           <ScrollProgress />
           <IntroSequence />
+          <CustomCursor />
           <Header />
           <main id="top">{children}</main>
           <Footer />

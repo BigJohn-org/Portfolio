@@ -3,14 +3,18 @@
 @tailwind utilities;
 
 :root {
-  --ink: #0a0a0b;
-  --bone: #efece4;
-  --smoke: #16161a;
-  --fog: #26262a;
-  --steel: #8b8d94;
-  --accent: #ff5b2e;
-  --signal: #5c8dff;
-  --grid: rgba(239, 236, 228, 0.04);
+  --ink: #050505;
+  --navy: #081423;
+  --bone: #f8fafc;
+  --smoke: #0b1220;
+  --fog: #16213a;
+  --steel: #94a3b8;
+  --accent: #00e5ff;
+  --signal: #6c5ce7;
+  --aurora: #00ffa3;
+  --magenta: #ec4899;
+  --copper: #b87333;
+  --grid: rgba(0, 229, 255, 0.035);
 }
 
 @layer base {
@@ -27,7 +31,10 @@
   }
 
   body {
-    background: var(--ink);
+    background:
+      radial-gradient(ellipse 120% 60% at 70% -10%, rgba(8, 20, 35, 0.9), transparent 60%),
+      radial-gradient(ellipse 90% 50% at 10% 110%, rgba(108, 92, 231, 0.05), transparent 60%),
+      var(--ink);
     color: var(--bone);
     font-feature-settings: "ss01", "cv11", "calt";
     overflow-x: hidden;
@@ -76,6 +83,19 @@
   .lenis.lenis-scrolling iframe {
     pointer-events: none;
   }
+
+  /* Custom cursor active (fine pointers only) */
+  @media (pointer: fine) {
+    html.cursor-orb,
+    html.cursor-orb a,
+    html.cursor-orb button,
+    html.cursor-orb [role="button"],
+    html.cursor-orb input,
+    html.cursor-orb textarea,
+    html.cursor-orb label {
+      cursor: none;
+    }
+  }
 }
 
 @layer components {
@@ -92,22 +112,66 @@
     font-feature-settings: "ss01", "ss02";
   }
 
+  /* Holographic glass — cyan-tinted, refraction edge */
   .glass {
-    background: linear-gradient(180deg, rgba(239, 236, 228, 0.04), rgba(239, 236, 228, 0.01));
-    border: 1px solid rgba(239, 236, 228, 0.08);
+    background: linear-gradient(180deg, rgba(0, 229, 255, 0.045), rgba(8, 20, 35, 0.25));
+    border: 1px solid rgba(0, 229, 255, 0.12);
     backdrop-filter: blur(18px) saturate(140%);
     -webkit-backdrop-filter: blur(18px) saturate(140%);
   }
 
   .glass-strong {
-    background: linear-gradient(180deg, rgba(239, 236, 228, 0.07), rgba(239, 236, 228, 0.02));
-    border: 1px solid rgba(239, 236, 228, 0.1);
+    background: linear-gradient(180deg, rgba(0, 229, 255, 0.07), rgba(8, 20, 35, 0.4));
+    border: 1px solid rgba(0, 229, 255, 0.16);
     backdrop-filter: blur(28px) saturate(160%);
     -webkit-backdrop-filter: blur(28px) saturate(160%);
+    box-shadow:
+      inset 0 1px 0 rgba(248, 250, 252, 0.06),
+      0 20px 60px -20px rgba(0, 0, 0, 0.6);
+  }
+
+  /* Holographic panel — gradient border + inner glow */
+  .holo {
+    position: relative;
+    background:
+      linear-gradient(160deg, rgba(0, 229, 255, 0.05), rgba(8, 20, 35, 0.55) 45%, rgba(108, 92, 231, 0.06));
+    border: 1px solid transparent;
+    background-clip: padding-box;
+    backdrop-filter: blur(20px) saturate(150%);
+    -webkit-backdrop-filter: blur(20px) saturate(150%);
+  }
+  .holo::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    z-index: -1;
+    border-radius: inherit;
+    background: linear-gradient(
+      160deg,
+      rgba(0, 229, 255, 0.45),
+      rgba(0, 229, 255, 0.06) 30%,
+      rgba(108, 92, 231, 0.08) 65%,
+      rgba(236, 72, 153, 0.3)
+    );
+  }
+
+  /* Scanline sweep — put on a relative overflow-hidden parent */
+  .scanlines::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: repeating-linear-gradient(
+      to bottom,
+      transparent 0px,
+      transparent 3px,
+      rgba(0, 229, 255, 0.025) 3px,
+      rgba(0, 229, 255, 0.025) 4px
+    );
   }
 
   .hairline {
-    @apply border-t border-bone/10;
+    @apply border-t border-accent/10;
   }
 
   .grid-bg {
@@ -115,25 +179,39 @@
       linear-gradient(var(--grid) 1px, transparent 1px),
       linear-gradient(90deg, var(--grid) 1px, transparent 1px);
     background-size: 64px 64px;
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, black 30%, transparent 80%);
+    -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, black 30%, transparent 80%);
   }
 
   .text-balance {
     text-wrap: balance;
   }
 
+  /* Aurora gradient text */
+  .aurora-text {
+    background: linear-gradient(100deg, #00e5ff 0%, #6c5ce7 45%, #ec4899 90%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
   .shimmer-text {
     background: linear-gradient(
       110deg,
-      rgba(239, 236, 228, 0.4) 0%,
-      rgba(239, 236, 228, 1) 45%,
-      rgba(239, 236, 228, 1) 55%,
-      rgba(239, 236, 228, 0.4) 100%
+      rgba(248, 250, 252, 0.4) 0%,
+      rgba(0, 229, 255, 1) 45%,
+      rgba(248, 250, 252, 1) 55%,
+      rgba(248, 250, 252, 0.4) 100%
     );
     background-size: 200% 100%;
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
     animation: shimmer 3s linear infinite;
+  }
+
+  .text-glow-cyan {
+    text-shadow: 0 0 24px rgba(0, 229, 255, 0.45), 0 0 64px rgba(0, 229, 255, 0.2);
   }
 
   .mask-fade-b {

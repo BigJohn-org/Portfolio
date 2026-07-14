@@ -33,10 +33,10 @@ type Props = {
 };
 
 const toneOverlay: Record<CinematicTone, string> = {
-  warm: "linear-gradient(135deg, rgba(255,91,46,0.22), rgba(255,140,80,0.05) 40%, rgba(92,141,255,0.08))",
-  amber: "linear-gradient(180deg, rgba(255,148,60,0.16), rgba(10,10,11,0.4))",
-  cool: "linear-gradient(135deg, rgba(92,141,255,0.16), rgba(10,10,11,0.35))",
-  neutral: "linear-gradient(180deg, rgba(239,236,228,0.04), rgba(10,10,11,0.25))",
+  warm: "linear-gradient(135deg, rgba(184,115,51,0.2), rgba(236,72,153,0.06) 40%, rgba(0,229,255,0.08))",
+  amber: "linear-gradient(180deg, rgba(184,115,51,0.16), rgba(5,5,5,0.4))",
+  cool: "linear-gradient(135deg, rgba(0,229,255,0.14), rgba(8,20,35,0.35))",
+  neutral: "linear-gradient(180deg, rgba(248,250,252,0.04), rgba(5,5,5,0.25))",
 };
 
 /**

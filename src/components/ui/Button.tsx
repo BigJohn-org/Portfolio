@@ -19,15 +19,15 @@ type Props = {
 };
 
 const base =
-  "group/btn relative inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 font-mono text-[11px] uppercase tracking-[0.18em] transition-colors duration-400 ease-glide focus:outline-none";
+  "group/btn relative inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 font-mono text-[11px] uppercase tracking-[0.18em] transition-all duration-400 ease-glide focus:outline-none active:scale-95";
 
 const variants: Record<Variant, string> = {
   primary:
-    "bg-bone text-ink hover:bg-accent hover:text-bone",
+    "bg-accent text-ink animate-breathe hover:bg-bone hover:text-ink hover:shadow-glow-cyan",
   ghost:
-    "bg-bone/[0.04] text-bone hover:bg-bone/[0.08] border border-bone/10",
+    "bg-accent/[0.05] text-bone hover:bg-accent/[0.1] border border-accent/15 hover:shadow-glow-cyan",
   outline:
-    "border border-bone/20 text-bone hover:border-bone/60 hover:bg-bone/[0.03]",
+    "border border-accent/25 text-bone hover:border-accent/70 hover:bg-accent/[0.05] hover:shadow-glow-cyan",
 };
 
 export default function Button({

@@ -18,8 +18,8 @@ export async function GET() {
           justifyContent: "space-between",
           padding: "72px",
           background:
-            "linear-gradient(135deg, #0a0a0b 0%, #16161a 50%, #0a0a0b 100%)",
-          color: "#efece4",
+            "linear-gradient(135deg, #050505 0%, #081423 55%, #050505 100%)",
+          color: "#f8fafc",
           fontFamily: "system-ui, sans-serif",
         }}
       >
@@ -29,7 +29,8 @@ export async function GET() {
               width: 10,
               height: 10,
               borderRadius: 999,
-              background: "#ff5b2e",
+              background: "#00e5ff",
+              boxShadow: "0 0 18px rgba(0,229,255,0.8)",
             }}
           />
           <span
@@ -54,11 +55,11 @@ export async function GET() {
               margin: 0,
             }}
           >
-            Software Engineer · Stellar ecosystem · Lagos
+            Backend &amp; Full-Stack Engineer · Fintech Infrastructure
           </p>
           <h1
             style={{
-              fontSize: 88,
+              fontSize: 84,
               lineHeight: 0.96,
               fontWeight: 500,
               letterSpacing: "-0.035em",
@@ -66,7 +67,7 @@ export async function GET() {
               maxWidth: 1000,
             }}
           >
-            Full-stack engineer, writing into Stellar.
+            I don&apos;t just build software. I engineer digital experiences.
           </h1>
         </div>
 
@@ -81,9 +82,9 @@ export async function GET() {
             opacity: 0.6,
           }}
         >
-          <span>Lagos · WAT</span>
-          <span style={{ color: "#ff5b2e" }}>
-            ● Open to engineering roles · remote-friendly
+          <span>Lagos · WAT · Stellar / Soroban &amp; Web3</span>
+          <span style={{ color: "#00e5ff" }}>
+            ● Open to backend / full-stack roles · remote-friendly
           </span>
         </div>
       </div>

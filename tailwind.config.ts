@@ -1,5 +1,21 @@
 import type { Config } from "tailwindcss";
 
+/**
+ * Deep-space design tokens.
+ *
+ * ink     — void black          #050505
+ * navy    — midnight navy       #081423
+ * smoke   — dark graphite       #0B1220
+ * fog     — raised surface      #16213A
+ * bone    — crisp white         #F8FAFC
+ * steel   — cool light gray     #94A3B8
+ * accent  — electric cyan       #00E5FF
+ * signal  — royal purple        #6C5CE7
+ * aurora  — aurora green        #00FFA3
+ * magenta — soft magenta        #EC4899
+ * copper  — structural copper   #B87333
+ * neon    — neon blue           #3B82F6
+ */
 const config: Config = {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -19,36 +35,41 @@ const config: Config = {
     extend: {
       colors: {
         ink: {
-          DEFAULT: "#0a0a0b",
-          50: "#f7f6f3",
-          100: "#ecebe7",
-          200: "#d4d2cb",
-          300: "#a8a59a",
-          400: "#6b6960",
-          500: "#3b3a37",
-          600: "#26262a",
-          700: "#1a1a1d",
-          800: "#121215",
-          900: "#0a0a0b",
+          DEFAULT: "#050505",
+          50: "#f2f6fc",
+          100: "#e2eaf5",
+          200: "#c3d2e6",
+          300: "#94aac9",
+          400: "#5f7ba3",
+          500: "#3d5680",
+          600: "#243B5C",
+          700: "#16213A",
+          800: "#0B1220",
+          900: "#050505",
         },
-        bone: "#efece4",
-        smoke: "#16161a",
-        fog: "#26262a",
-        steel: "#8b8d94",
+        navy: "#081423",
+        bone: "#F8FAFC",
+        smoke: "#0B1220",
+        fog: "#16213A",
+        steel: "#94A3B8",
         accent: {
-          DEFAULT: "#ff5b2e",
-          50: "#fff2ec",
-          100: "#ffe3d6",
-          200: "#ffbfa3",
-          300: "#ff9870",
-          400: "#ff7448",
-          500: "#ff5b2e",
-          600: "#e64517",
-          700: "#bc3712",
-          800: "#902c0f",
-          900: "#5e1d0a",
+          DEFAULT: "#00E5FF",
+          50: "#ecfeff",
+          100: "#cffcfe",
+          200: "#a5f6fc",
+          300: "#67ecf9",
+          400: "#22d8ee",
+          500: "#00E5FF",
+          600: "#0299b8",
+          700: "#0a7a94",
+          800: "#116278",
+          900: "#135166",
         },
-        signal: "#5c8dff",
+        signal: "#6C5CE7",
+        aurora: "#00FFA3",
+        magenta: "#EC4899",
+        copper: "#B87333",
+        neon: "#3B82F6",
       },
       fontFamily: {
         sans: ["var(--font-sans)", "ui-sans-serif", "system-ui", "sans-serif"],
@@ -81,14 +102,27 @@ const config: Config = {
       backgroundImage: {
         "grain": "url('/textures/grain.png')",
         "noise": "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.6 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")",
-        "radial-fade": "radial-gradient(ellipse at top, rgba(255,91,46,0.08), transparent 60%)",
-        "spotlight": "radial-gradient(circle at 50% 0%, rgba(239,236,228,0.06), transparent 50%)",
+        "radial-fade": "radial-gradient(ellipse at top, rgba(0,229,255,0.08), transparent 60%)",
+        "spotlight": "radial-gradient(circle at 50% 0%, rgba(248,250,252,0.06), transparent 50%)",
+      },
+      boxShadow: {
+        "glow-cyan": "0 0 24px -6px rgba(0,229,255,0.5), 0 0 64px -12px rgba(0,229,255,0.25)",
+        "glow-purple": "0 0 24px -6px rgba(108,92,231,0.5), 0 0 64px -12px rgba(108,92,231,0.25)",
+        "glow-aurora": "0 0 24px -6px rgba(0,255,163,0.45), 0 0 64px -12px rgba(0,255,163,0.2)",
+        "island": "0 30px 80px -20px rgba(0,0,0,0.7), 0 0 0 1px rgba(0,229,255,0.06)",
       },
       animation: {
         "float-slow": "float 12s ease-in-out infinite",
+        "float-slower": "float 18s ease-in-out infinite",
         "drift": "drift 24s linear infinite",
         "shimmer": "shimmer 3s linear infinite",
         "blink": "blink 4s ease-in-out infinite",
+        "breathe": "breathe 4.5s ease-in-out infinite",
+        "orbit": "orbit 14s linear infinite",
+        "orbit-reverse": "orbit 18s linear infinite reverse",
+        "pulse-glow": "pulseGlow 3.2s ease-in-out infinite",
+        "scan": "scan 6s linear infinite",
+        "spin-slow": "spin 22s linear infinite",
       },
       keyframes: {
         float: {
@@ -106,6 +140,22 @@ const config: Config = {
         blink: {
           "0%, 92%, 100%": { transform: "scaleY(1)" },
           "96%": { transform: "scaleY(0.1)" },
+        },
+        breathe: {
+          "0%, 100%": { transform: "scale(1)", opacity: "1" },
+          "50%": { transform: "scale(1.015)", opacity: "0.92" },
+        },
+        orbit: {
+          "0%": { transform: "rotate(0deg)" },
+          "100%": { transform: "rotate(360deg)" },
+        },
+        pulseGlow: {
+          "0%, 100%": { opacity: "0.55", filter: "brightness(1)" },
+          "50%": { opacity: "1", filter: "brightness(1.3)" },
+        },
+        scan: {
+          "0%": { transform: "translateY(-100%)" },
+          "100%": { transform: "translateY(100%)" },
         },
       },
     },

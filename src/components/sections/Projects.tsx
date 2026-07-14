@@ -15,25 +15,24 @@ export default function Projects() {
           <div>
             <Reveal>
               <p className="eyebrow mb-6">
-                <span className="text-accent">003 — </span>Things I&apos;ve built
+                <span className="text-accent">004 — </span>Project islands
               </p>
             </Reveal>
             <Reveal>
               <h2 className="font-sans text-display-xl font-medium tracking-tightest text-balance">
-                A mix of{" "}
-                <span className="display-serif font-normal">
-                  experiments
-                </span>{" "}
-                and{" "}
-                <span className="display-serif font-normal">fundamentals.</span>
+                Each project is{" "}
+                <span className="display-serif font-normal aurora-text">
+                  its own island.
+                </span>
               </h2>
             </Reveal>
           </div>
           <Reveal delay={0.1}>
             <p className="max-w-sm text-bone/65">
-              Some Stellar / Soroban experiments I&apos;m using to learn the
-              ecosystem, plus the earlier projects that taught me the fundamentals.
-              I leave the small ones up on purpose — that&apos;s part of the journey.
+              USSD wallets, on-chain savings contracts, payment SDKs, and a
+              healthcare settlement layer — real fintech infrastructure
+              experiments orbiting one idea: financial access for everyday
+              Nigerians.
             </p>
           </Reveal>
         </div>
@@ -59,11 +58,11 @@ export default function Projects() {
                   <span className="absolute inset-0 animate-ping rounded-full bg-accent/60" />
                 </span>
                 <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-bone">
-                  the work · 003
+                  the work · 004
                 </span>
               </div>
               <div className="pointer-events-none absolute right-4 bottom-4 rounded-full glass-strong px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.2em] text-bone">
-                07 projects below
+                {String(projects.length).padStart(2, "0")} islands below
               </div>
             </div>
           </Scroll3D>

@@ -29,7 +29,8 @@ const fragment = /* glsl */ `
     float d = length(c);
     if (d > 0.5) discard;
     float a = smoothstep(0.5, 0.0, d) * vAlpha;
-    gl_FragColor = vec4(vec3(0.94, 0.93, 0.89), a);
+    // cool cyan-white particles
+    gl_FragColor = vec4(vec3(0.62, 0.93, 1.0), a);
   }
 `;
 

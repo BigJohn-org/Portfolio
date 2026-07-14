@@ -18,9 +18,9 @@ const kindLabel: Record<Milestone["kind"], string> = {
 
 const kindAccent: Record<Milestone["kind"], string> = {
   education: "text-signal border-signal/40",
-  work: "text-bone border-bone/40",
-  build: "text-accent border-accent/40",
-  milestone: "text-bone border-bone/40",
+  work: "text-accent border-accent/40",
+  build: "text-aurora border-aurora/40",
+  milestone: "text-magenta border-magenta/40",
 };
 
 export default function Timeline() {
@@ -37,22 +37,23 @@ export default function Timeline() {
         <div className="mb-20 max-w-3xl">
           <Reveal>
             <p className="eyebrow mb-6">
-              <span className="text-accent">005 — </span>Journey
+              <span className="text-accent">006 — </span>The railway of memories
             </p>
           </Reveal>
           <Reveal>
             <h2 className="font-sans text-display-xl font-medium tracking-tightest text-balance">
-              The short version of{" "}
-              <span className="display-serif font-normal">
-                how I got here.
+              Every station,{" "}
+              <span className="display-serif font-normal aurora-text">
+                a milestone.
               </span>
             </h2>
           </Reveal>
           <Reveal delay={0.1}>
             <p className="mt-6 max-w-xl text-bone/65 leading-relaxed">
-              A simple chronology — engineering training at Semicolon, the earlier
-              learning-phase projects, and the things I&apos;m currently exploring.
-              Nothing dramatic, just steady steps.
+              Ride the line — from the self-taught foundation, through the
+              Semicolon Africa residency and a client-facing internship, to
+              open-source contributions across the Stellar ecosystem. The light
+              follows you as you scroll.
             </p>
           </Reveal>
         </div>
@@ -83,11 +84,11 @@ export default function Timeline() {
         </div>
 
         <div ref={ref} className="relative pl-6 md:pl-12">
-          {/* Vertical track */}
-          <div className="absolute bottom-0 left-1 top-0 w-px bg-bone/10 md:left-3" />
+          {/* Railway track */}
+          <div className="absolute bottom-0 left-1 top-0 w-px bg-accent/10 md:left-3" />
           <motion.div
-            style={{ height: lineHeight }}
-            className="absolute left-1 top-0 w-px origin-top bg-gradient-to-b from-accent via-accent to-transparent md:left-3"
+            style={{ height: lineHeight, boxShadow: "0 0 12px rgba(0,229,255,0.5)" }}
+            className="absolute left-1 top-0 w-px origin-top bg-gradient-to-b from-accent via-signal to-transparent md:left-3"
           />
 
           <div className="space-y-16 md:space-y-24">
@@ -111,10 +112,10 @@ function MilestoneRow({
   return (
     <Reveal delay={index * 0.04}>
       <div className="relative grid grid-cols-1 gap-6 md:grid-cols-[120px_1fr] md:gap-12">
-        {/* Node dot */}
+        {/* Station node */}
         <div className="absolute -left-6 top-1.5 flex size-3 items-center justify-center md:-left-12">
-          <span className="size-3 rounded-full border border-accent/60 bg-ink" />
-          <span className="absolute size-1.5 rounded-full bg-accent" />
+          <span className="size-3 rounded-full border border-accent/60 bg-ink shadow-glow-cyan" />
+          <span className="absolute size-1.5 rounded-full bg-accent animate-pulse-glow" />
         </div>
 
         {/* Year column */}

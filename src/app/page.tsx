@@ -1,5 +1,6 @@
 import Hero from "@/components/sections/Hero";
 import About from "@/components/sections/About";
+import Skills from "@/components/sections/Skills";
 import Projects from "@/components/sections/Projects";
 import ComingSoon from "@/components/sections/ComingSoon";
 import Timeline from "@/components/sections/Timeline";
@@ -10,6 +11,7 @@ export default function HomePage() {
     <>
       <Hero />
       <About />
+      <Skills />
       <Projects />
       <ComingSoon />
       <Timeline />

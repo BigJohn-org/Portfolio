@@ -50,7 +50,7 @@ export default function Header() {
               <Magnetic key={link.name} strength={0.12}>
                 <Link
                   href={link.href}
-                  className="rounded-full px-4 py-2 font-mono text-[11px] uppercase tracking-[0.18em] text-bone/70 transition-colors hover:bg-bone/[0.04] hover:text-bone"
+                  className="rounded-full px-4 py-2 font-mono text-[11px] uppercase tracking-[0.18em] text-bone/70 transition-colors hover:bg-accent/[0.08] hover:text-accent"
                 >
                   {link.name}
                 </Link>
@@ -62,7 +62,7 @@ export default function Header() {
             <Magnetic strength={0.18}>
               <Link
                 href="#contact"
-                className="group inline-flex items-center gap-2 rounded-full bg-bone px-5 py-2 font-mono text-[11px] uppercase tracking-[0.18em] text-ink transition-colors hover:bg-accent hover:text-bone"
+                className="group inline-flex items-center gap-2 rounded-full bg-accent px-5 py-2 font-mono text-[11px] uppercase tracking-[0.18em] text-ink transition-all hover:bg-bone hover:shadow-glow-cyan"
               >
                 <span className="size-1.5 rounded-full bg-current" />
                 Available

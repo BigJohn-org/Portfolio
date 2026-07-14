@@ -43,7 +43,7 @@ export default function PortraitCard() {
           className="absolute inset-0 mix-blend-color"
           style={{
             background:
-              "linear-gradient(135deg, rgba(255,91,46,0.18), rgba(92,141,255,0.08))",
+              "linear-gradient(135deg, rgba(0,229,255,0.18), rgba(108,92,231,0.08))",
           }}
         />
         {/* Inner shadow */}

@@ -93,9 +93,9 @@ export default function ShaderGradient() {
       uTime: { value: 0 },
       uMouse: { value: new THREE.Vector2(0, 0) },
       uRes: { value: new THREE.Vector2(size.width, size.height) },
-      uColorA: { value: new THREE.Color("#08080a") },
-      uColorB: { value: new THREE.Color("#1a0d08") },
-      uColorC: { value: new THREE.Color("#ff5b2e") },
+      uColorA: { value: new THREE.Color("#050505") },
+      uColorB: { value: new THREE.Color("#081423") },
+      uColorC: { value: new THREE.Color("#00e5ff") },
     }),
     [size.width, size.height]
   );

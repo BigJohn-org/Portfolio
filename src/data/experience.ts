@@ -9,42 +9,52 @@ export type Milestone = {
 };
 
 /**
- * Honest chronology of the path so far.
+ * The railway of memories — each station is a career milestone,
+ * synced with the July 2026 CV.
  */
 export const journey: Milestone[] = [
   {
     year: "2026",
-    range: "Q1 — present",
-    title: "Exploring the Stellar ecosystem",
-    org: "Independent · open source",
-    kind: "build",
-    body: "Spending time on Soroban smart contracts in Rust and small product experiments around them — a Nigerian Ajo (rotating-savings) on-chain, a USSD wallet gateway, a healthcare settlement sketch, an NGN/USDC SDK exploration. None of these are production yet; they're how I'm learning the platform.",
-    highlights: ["Rust + Go + TypeScript", "Soroban smart contracts", "Small, honest experiments"],
+    range: "2026 — present",
+    title: "Open-source contributor, Stellar ecosystem",
+    org: "OnlyDust · SwiftChain · StrellerMinds · Agora · ChainVerse",
+    kind: "work",
+    body: "Contributing to production-adjacent repositories across the Stellar ecosystem — landing pull requests on Soroban smart contracts, NestJS backend services, and Next.js frontends across 20+ repos. Reading and working within established codebases to understand how distributed teams ship real software at scale.",
+    highlights: ["20+ ecosystem repos", "Soroban + NestJS + Next.js", "Production-adjacent code"],
   },
   {
     year: "2026",
-    range: "Q1",
-    title: "Open-source contributions",
-    org: "Stellar ecosystem · OnlyDust",
-    kind: "work",
-    body: "Contributing to projects across the Stellar ecosystem — SwiftChain, StrellerMinds, Agora, ChainVerse, and others — landing PRs on smart contracts, frontends, and backend services. A great way to read production-adjacent code and learn how teams actually ship.",
-    highlights: ["20+ ecosystem repos touched", "Soroban + NestJS + Next.js"],
+    range: "Q1 2026",
+    title: "GSoC 2026 applicant",
+    org: "AnkiDroid · OneBusAway/OTSF · VideoLAN",
+    kind: "milestone",
+    body: "Submitted Google Summer of Code proposals to three organisations — AnkiDroid (Kotlin / Material 3), OneBusAway/OTSF (Python / GeoPandas), and VideoLAN (Go / Vue.js 3). Each proposal meant reading a large, unfamiliar codebase deeply enough to design a credible contribution.",
+    highlights: ["Kotlin / Material 3", "Python / GeoPandas", "Go / Vue.js 3"],
   },
   {
     year: "2025",
-    range: "2025 — 2026",
-    title: "Engineering programme",
-    org: "Semicolon Africa",
+    range: "Nov 2025 — Feb 2026",
+    title: "Software development intern",
+    org: "Briskit Agency · Port Harcourt (remote)",
+    kind: "work",
+    body: "Built frontend components and implemented UI sections from approved designs for CamberfarmAfrica and CamberfarmExport. Supported backend API endpoint development and testing, debugged responsiveness across both client projects, and worked GitHub + Asana inside an Agile workflow.",
+    highlights: ["Two client sites shipped", "API endpoints + testing", "Agile · GitHub · Asana"],
+  },
+  {
+    year: "2025",
+    range: "Feb 2025 — Feb 2026",
+    title: "Software engineering residency",
+    org: "Semicolon Africa · Lagos",
     kind: "education",
-    body: "Intensive, hands-on engineering training — backend systems, object-oriented design, collaborative software delivery, system-design fundamentals. The bias was always toward shipping work over coursework, which suits me.",
-    highlights: ["Java / OOP", "System design", "Collaborative delivery"],
+    body: "A year-long, build-first engineering residency — backend systems, OOP, database design, system design, and collaborative software delivery. Built and deployed full-stack applications with React, Node.js, Express, Spring Boot, and Flask against relational and document databases. Sprints, peer code reviews, pair programming.",
+    highlights: ["Java / Spring Boot", "System design", "Team sprints + code review"],
   },
   {
     year: "2024",
     title: "Self-directed foundation",
     org: "Personal · GitHub",
     kind: "build",
-    body: "Worked through the basics across Python, JavaScript, and Java by building small things end-to-end — a wallet system, a to-do manager, a movie explorer, a URL shortener, a Bible search app, a chat room. The point was to finish each one, not to make them famous.",
-    highlights: ["Python / JS / Java", "Full-stack basics"],
+    body: "Worked through the fundamentals across Python, JavaScript, and Java by building small things end-to-end — a wallet system, a to-do manager, a movie explorer, a calculator. The point was to finish each one and leave it public. That habit became 75+ repositories.",
+    highlights: ["Python / JS / Java", "Full-stack basics", "Everything stays public"],
   },
 ];

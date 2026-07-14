@@ -15,71 +15,68 @@ export type MediaSlot = {
 };
 
 /**
- * Site-wide media map. Each slot is intentionally pointed at a DIFFERENT
- * asset — no photo repeats across sections.
+ * Site-wide media map. Each slot points at a DIFFERENT asset —
+ * no photo repeats across sections.
  *
- * Available raw assets in /public/media/:
- *   photo-01.jpeg   B&W full-body with phone (atmospheric)        → hero
- *   photo-02.jpeg   profile in front of whiteboard code           → projects header
- *   photo-13.jpeg   studio portrait, black hoodie                 → about (main)
- *   photo-14.jpeg   hackathon pensive shot                        → journey
- *   photo-19.jpeg   formal full-body grey traditional             → contact
- *   photo-20.jpeg   animated conversation (hedge backdrop)        → spare
- *   photo-solid.jpg B&W coding at hacker house                    → about (b-side / workspace)
- *   video-02.mp4    short clip (679KB)                            → omnist reel
- *   video-01.mp4    longer clip (3.7MB)                           → spare (heavy)
+ * July 2026 asset drop in /public/media/:
+ *   photo-cafe-01.jpg  headphones on, deep in the laptop (café)     → hero
+ *   photo-cafe-02.jpg  hydrating behind the MacBook (café)          → about b-side
+ *   photo-hall.jpg     standing portrait, black hoodie, marble hall → about (main)
+ *   photo-car.jpg      car selfie, green lanyard                    → contact
+ *   video-cafe.mp4     1280×720 landscape working clip (3.6MB)      → journey
+ *   video-reel.mp4     1080×1920 portrait reel (7.2MB)              → omnist
+ *   video-snap.mp4     720×1280 portrait clip (11.8MB)              → spare (heavy)
  *
- * To swap any slot, edit only the entry below. Components auto-pick up.
+ * Earlier assets (photo-01…photo-22, video-01/02) remain available as spares.
  */
 export const media = {
   hero: {
     kind: "image",
-    src: "/media/photo-01.jpeg",
+    src: "/media/photo-cafe-01.jpg",
     fallback: "/imeobong.jpg",
-    alt: "Imeobong John — Lagos",
-    caption: "Lagos · 2026 · 35mm",
-    tone: "neutral",
+    alt: "Imeobong John — headphones on, shipping from a Lagos café",
+    caption: "Lagos · 2026 · in the field",
+    tone: "cool",
     aspect: "3/4",
     parallax: 0.6,
   },
 
   about: {
     kind: "image",
-    src: "/media/photo-13.jpeg",
+    src: "/media/photo-hall.jpg",
     fallback: "/imeobong.jpg",
-    alt: "Imeobong John — studio portrait",
-    caption: "// portrait · studio",
-    tone: "warm",
-    aspect: "4/5",
+    alt: "Imeobong John — portrait",
+    caption: "// subject · I.J.A",
+    tone: "neutral",
+    aspect: "3/4",
     parallax: 0.5,
   },
 
   workspace: {
     kind: "image",
-    src: "/media/photo-solid.jpg",
+    src: "/media/photo-cafe-02.jpg",
     fallback: "/imeobong.jpg",
-    alt: "At the keyboard — Lagos Hacker House",
-    caption: "// the rig · Hacker House",
-    tone: "neutral",
-    aspect: "1/1",
+    alt: "Behind the MacBook — hydrate and ship",
+    caption: "// the rig · hydrate & ship",
+    tone: "cool",
+    aspect: "3/4",
     parallax: 0.4,
   },
 
   omnist: {
     kind: "video",
-    src: "/media/video-02.mp4",
+    src: "/media/video-reel.mp4",
     fallback: "/media/photo-01.jpeg",
     alt: "OMNIST concept reel",
     caption: "// concept reel · 2026",
     tone: "cool",
-    // video-02 is 424x642 (≈2:3 portrait). Matching aspect so nothing crops.
-    aspect: "424/642",
+    aspect: "9/16",
     parallax: 0.6,
   },
 
   contact: {
     kind: "image",
-    src: "/media/photo-19.jpeg",
+    src: "/media/photo-car.jpg",
     fallback: "/imeobong.jpg",
     alt: "Imeobong John",
     tone: "warm",
@@ -88,13 +85,14 @@ export const media = {
   },
 
   journey: {
-    kind: "image",
-    src: "/media/photo-14.jpeg",
-    fallback: "/imeobong.jpg",
-    alt: "Lagos Hacker House",
-    caption: "// Lagos Hacker House · the journey continues",
+    kind: "video",
+    src: "/media/video-cafe.mp4",
+    poster: "/media/photo-cafe-01.jpg",
+    fallback: "/media/photo-14.jpeg",
+    alt: "In the field — Lagos, 2026",
+    caption: "// live footage · the journey continues",
     tone: "neutral",
-    aspect: "3/2",
+    aspect: "16/9",
     parallax: 0.5,
   },
 

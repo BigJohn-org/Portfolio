@@ -5,17 +5,10 @@ import { useRef } from "react";
 import { portfolioData } from "@/data/portfolio";
 import { media } from "@/data/media";
 import Reveal from "@/components/motion/Reveal";
-import Marquee from "@/components/motion/Marquee";
 import Scroll3D from "@/components/motion/Scroll3D";
 import Tag from "@/components/ui/Tag";
 import Cinematic from "@/components/ui/Cinematic";
-
-const stats = [
-  { value: "75+", label: "public repositories" },
-  { value: "6", label: "languages I write in" },
-  { value: "1", label: "engineering programme · Semicolon" },
-  { value: "Daily", label: "commit cadence" },
-];
+import EnergyStat from "@/components/ui/EnergyStat";
 
 export default function About() {
   const ref = useRef<HTMLElement>(null);
@@ -31,12 +24,12 @@ export default function About() {
         style={{ y }}
         className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-full grid-bg opacity-60"
       />
-      <div className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-transparent via-ink to-transparent" />
+      <div className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-transparent via-ink/60 to-transparent" />
 
       <div className="container-editorial">
         <Reveal>
           <p className="eyebrow mb-8">
-            <span className="text-accent">002 — </span>About
+            <span className="text-accent">002 — </span>The laboratory
           </p>
         </Reveal>
 
@@ -44,10 +37,11 @@ export default function About() {
           <div>
             <Reveal>
               <h2 className="font-sans text-display-xl font-medium tracking-tightest text-balance">
-                An engineer who{" "}
-                <span className="display-serif font-normal text-bone/90">
-                  takes the long way.
-                </span>
+                Engineering{" "}
+                <span className="display-serif font-normal aurora-text">
+                  financial infrastructure
+                </span>{" "}
+                for everyday Nigerians.
               </h2>
             </Reveal>
 
@@ -57,25 +51,27 @@ export default function About() {
             </Reveal>
 
             <Reveal delay={0.2} className="mt-12 flex flex-wrap gap-2">
-              <Tag tone="bone">Python · Java · JS</Tag>
-              <Tag tone="signal">Go · TypeScript</Tag>
-              <Tag tone="accent">Learning Rust · Soroban</Tag>
-              <Tag tone="ghost">APIs · Full-stack</Tag>
+              <Tag tone="accent">Go · Python · TypeScript</Tag>
+              <Tag tone="signal">Rust · Soroban · Stellar</Tag>
+              <Tag tone="bone">FastAPI · NestJS · Spring Boot</Tag>
+              <Tag tone="ghost">Fintech · Payments · Healthtech</Tag>
             </Reveal>
           </div>
 
-          {/* Cinematic portrait plate with 3D scroll-in */}
+          {/* Holographic portrait plate with 3D scroll-in */}
           <Scroll3D mode="enter" rotate={12} translateZ={120} scaleMin={0.94}>
             <div className="relative mx-auto w-full max-w-sm lg:max-w-none">
-              <Cinematic
-                src={media.about.src}
-                kind={media.about.kind}
-                alt={media.about.alt}
-                tone={media.about.tone}
-                aspect={media.about.aspect}
-                parallax={media.about.parallax}
-                caption={media.about.caption}
-              />
+              <div className="relative overflow-hidden rounded-2xl scanlines">
+                <Cinematic
+                  src={media.about.src}
+                  kind={media.about.kind}
+                  alt={media.about.alt}
+                  tone={media.about.tone}
+                  aspect={media.about.aspect}
+                  parallax={media.about.parallax}
+                  caption={media.about.caption}
+                />
+              </div>
               {/* Specimen labels */}
               <div className="absolute -top-3 left-4 inline-flex items-center gap-2 rounded-full glass-strong px-3 py-1">
                 <span className="size-1.5 rounded-full bg-accent" />
@@ -85,18 +81,18 @@ export default function About() {
               </div>
               <div className="absolute -bottom-3 right-4 inline-flex items-center gap-2 rounded-full glass-strong px-3 py-1">
                 <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-bone/80">
-                  frame · 001 / 256
+                  specimen · lagos node
                 </span>
               </div>
             </div>
           </Scroll3D>
         </div>
 
-        {/* Philosophy — promoted to full-width 3-column row */}
-        <div className="mt-20 grid grid-cols-1 gap-px overflow-hidden rounded-2xl border border-bone/10 bg-bone/10 md:grid-cols-3">
+        {/* Philosophy — full-width 3-column row */}
+        <div className="mt-20 grid grid-cols-1 gap-px overflow-hidden rounded-2xl border border-accent/10 bg-accent/10 md:grid-cols-3">
           {portfolioData.philosophy.map((p, i) => (
             <Reveal key={p.heading} delay={i * 0.08}>
-              <div className="group relative h-full bg-ink p-7 transition-colors duration-600 ease-glide hover:bg-bone/[0.03]">
+              <div className="group relative h-full bg-ink p-7 transition-colors duration-600 ease-glide hover:bg-accent/[0.03]">
                 <div className="flex items-baseline gap-4">
                   <span className="font-mono text-[10.5px] uppercase tracking-[0.22em] text-accent">
                     {String(i + 1).padStart(2, "0")}
@@ -117,16 +113,18 @@ export default function About() {
         <div className="mt-16 grid grid-cols-1 gap-8 md:mt-24 md:grid-cols-[1fr_1.4fr] md:items-center md:gap-14">
           <Scroll3D mode="enter" rotate={10} translateZ={100} scaleMin={0.94}>
             <div className="relative mx-auto w-full max-w-md md:max-w-none">
-              <Cinematic
-                src={media.workspace.src}
-                kind={media.workspace.kind}
-                alt={media.workspace.alt}
-                tone={media.workspace.tone}
-                aspect={media.workspace.aspect}
-                parallax={media.workspace.parallax}
-                caption={media.workspace.caption}
-                grainOpacity={0.32}
-              />
+              <div className="relative overflow-hidden rounded-2xl scanlines">
+                <Cinematic
+                  src={media.workspace.src}
+                  kind={media.workspace.kind}
+                  alt={media.workspace.alt}
+                  tone={media.workspace.tone}
+                  aspect={media.workspace.aspect}
+                  parallax={media.workspace.parallax}
+                  caption={media.workspace.caption}
+                  grainOpacity={0.32}
+                />
+              </div>
               <div className="absolute -top-3 right-4 inline-flex items-center gap-2 rounded-full glass-strong px-3 py-1">
                 <span className="size-1.5 rounded-full bg-signal" />
                 <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-bone/80">
@@ -142,34 +140,33 @@ export default function About() {
             <Reveal>
               <h3 className="font-sans text-display-md font-medium tracking-tightest text-bone text-balance">
                 Most of the work{" "}
-                <span className="display-serif font-normal text-bone/90">
+                <span className="display-serif font-normal text-accent">
                   happens here.
                 </span>
               </h3>
             </Reveal>
             <Reveal delay={0.1}>
               <p className="mt-5 max-w-md text-bone/65 leading-relaxed">
-                The Hacker House, late nights, two screens, headphones on — most of
-                what shipped this year was written somewhere that looked like this.
-                Quiet work, steady commits, the boring middle.
+                Lagos cafés, late nights, headphones on — most of what shipped
+                this year was written somewhere that looked like this. Quiet
+                work, steady commits, the boring middle.
               </p>
             </Reveal>
           </div>
         </div>
 
-        {/* Stats strip */}
+        {/* Energy stats strip */}
         <div className="hairline mt-24 pt-10">
           <div className="grid grid-cols-2 gap-y-10 md:grid-cols-4">
-            {stats.map((s, i) => (
+            {portfolioData.stats.map((s, i) => (
               <Reveal key={s.label} delay={i * 0.06}>
-                <div>
-                  <p className="font-sans text-5xl font-medium tracking-tightest text-bone md:text-6xl">
-                    {s.value}
-                  </p>
-                  <p className="mt-2 font-mono text-[11px] uppercase tracking-[0.18em] text-steel">
-                    {s.label}
-                  </p>
-                </div>
+                <EnergyStat
+                  value={s.value}
+                  suffix={s.suffix}
+                  label={s.label}
+                  sub={s.sub}
+                  delay={i * 0.15}
+                />
               </Reveal>
             ))}
           </div>
@@ -197,7 +194,7 @@ export default function About() {
 
           {/* Interests */}
           <Reveal delay={0.1} className="md:col-span-4">
-            <div className="h-full rounded-2xl border border-bone/10 bg-bone/[0.02] p-8">
+            <div className="h-full rounded-2xl border border-accent/10 bg-accent/[0.02] p-8">
               <p className="eyebrow mb-5">// outside the editor</p>
               <ul className="space-y-4">
                 {portfolioData.interests.map((i) => (
@@ -216,11 +213,11 @@ export default function About() {
 
           {/* Now */}
           <Reveal delay={0.18} className="md:col-span-3">
-            <div className="flex h-full flex-col rounded-2xl border border-bone/10 bg-bone/[0.02] p-8">
+            <div className="flex h-full flex-col rounded-2xl border border-accent/10 bg-accent/[0.02] p-8">
               <div className="mb-5 flex items-center gap-2">
                 <span className="relative inline-flex size-2">
-                  <span className="absolute inset-0 rounded-full bg-accent" />
-                  <span className="absolute inset-0 animate-ping rounded-full bg-accent/60" />
+                  <span className="absolute inset-0 rounded-full bg-aurora" />
+                  <span className="absolute inset-0 animate-ping rounded-full bg-aurora/60" />
                 </span>
                 <p className="eyebrow">// now</p>
               </div>
@@ -234,32 +231,6 @@ export default function About() {
               </ul>
             </div>
           </Reveal>
-        </div>
-
-        {/* Skills marquee */}
-        <div className="mt-24">
-          <Reveal className="mb-8">
-            <p className="eyebrow">// stack — what I reach for</p>
-          </Reveal>
-          <Marquee duration={48} pauseOnHover>
-            {portfolioData.skills.map((s) => (
-              <span
-                key={s.name}
-                className="inline-flex items-center gap-3 font-serif italic text-3xl md:text-4xl"
-                style={{
-                  color:
-                    s.weight === 3
-                      ? "var(--bone)"
-                      : s.weight === 2
-                        ? "rgba(239,236,228,0.55)"
-                        : "rgba(239,236,228,0.3)",
-                }}
-              >
-                <span className="text-accent">✦</span>
-                {s.name}
-              </span>
-            ))}
-          </Marquee>
         </div>
       </div>
     </section>

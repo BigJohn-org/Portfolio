@@ -18,196 +18,150 @@ export type Project = {
 };
 
 /**
- * Mix of recent Stellar-ecosystem experiments and earlier learning-phase projects.
- * The earlier ones (Wallet System, ToDo, Calculator, Movie Explorer) match what
- * Imeobong shows on his live portfolio. Voice is honest — small tools, real
- * learning, not a startup pitch.
+ * Project islands — each floats in the digital universe with its own
+ * signature accent. Ordered flagship-first, matching the CV.
  */
 export const projects: Project[] = [
-  // ───────── Recent: Stellar / Soroban experiments ─────────
+  // ───────── Flagship: fintech infrastructure ─────────
   {
     slug: "stellar-ussd",
     name: "StellarUSSD",
-    oneLiner: "A Stellar wallet you can use from a feature phone.",
+    oneLiner: "A Stellar wallet for feature phones — crypto access over *123#.",
     problem:
-      "A lot of people in Nigeria still use feature phones, or have a smartphone but no data. They can't use a normal crypto wallet app. I wanted to see if you could put one behind a USSD code instead — the same way mobile money already works.",
+      "Millions of Nigerians without smartphones or data are excluded from typical wallet apps. Mobile money already works over USSD — so a crypto wallet should too.",
     approach:
-      "A Go backend that talks to telco USSD gateways and translates *123#-style menus into Stellar transactions. The phone is dumb; session state, keys, and rate-limiting all live on the server.",
+      "A Go backend that translates USSD menu interactions into Stellar network transactions. The phone stays dumb: server-side key custody, session state that survives dropped connections, and a telco-agnostic gateway adapter all live on the backend.",
     outcome:
-      "An early prototype that proves the idea works end-to-end. A lot more to harden before it's production-ready, but the core flow is there.",
+      "A working end-to-end prototype that proves the idea. Currently hardening the session state machine and custody model toward production readiness.",
     stack: ["Go", "Stellar SDK", "PostgreSQL", "Docker"],
     highlights: [
-      "Session state machine survives dropped sessions",
-      "Server-side key custody for the prototype",
+      "Session state survives dropped connections",
+      "Server-side key custody",
       "Telco-agnostic gateway adapter",
     ],
     status: "active",
     year: "2026",
     repo: "https://github.com/BigJohn-dev/StellarUSSD-",
     demo: null,
-    accent: "#ff5b2e",
-    tags: ["Backend", "Stellar", "Experiment"],
+    accent: "#00E5FF",
+    tags: ["Backend", "Fintech Infrastructure", "Stellar"],
   },
   {
     slug: "ajochain",
     name: "AjoChain",
-    oneLiner: "Digital Ajo (rotating savings) using Soroban smart contracts.",
+    oneLiner: "Nigerian rotating savings (Ajo/Esusu), enforced on-chain.",
     problem:
-      "Ajo / Esusu groups are everywhere in Nigeria — friends pool money each month and take turns receiving the pot. It works on trust, which means it sometimes doesn't work. I wanted to try encoding the rules in a contract.",
+      "Ajo groups run on trust: friends pool money monthly and take turns receiving the pot. When trust fails, people lose savings. The rules deserve stronger enforcement than a group leader's goodwill.",
     approach:
-      "Soroban smart contracts in Rust. Members deposit on a schedule, the contract decides who gets the payout in which round, and a default doesn't depend on the group leader's mercy.",
+      "Soroban smart contracts in Rust encoding the full rules of the rotation — schedule-driven payouts, default handling, and transparent rotation logic, all enforced at the contract level.",
     outcome:
-      "Working prototype contract with the basic rotation logic. Still learning Soroban — there's a lot to improve on the contract economics side.",
+      "Working contract with the core rotation logic on-chain. Iterating on the contract economics and default-recovery paths.",
     stack: ["Rust", "Soroban", "Stellar"],
     highlights: [
-      "Schedule-driven payout enforced on-chain",
-      "Default-handling without group-leader veto",
-      "First real Soroban project — written while learning",
+      "Schedule-driven payouts enforced on-chain",
+      "Default handling without leader veto",
+      "Transparent rotation logic",
     ],
-    status: "learning",
+    status: "active",
     year: "2026",
     repo: "https://github.com/BigJohn-dev/AjoChain",
     demo: null,
-    accent: "#5c8dff",
-    tags: ["Smart Contracts", "Soroban", "Learning"],
-  },
-  {
-    slug: "medipay-stellar",
-    name: "MediPay Stellar",
-    oneLiner: "A small experiment in healthcare settlement on Stellar.",
-    problem:
-      "Hospital ↔ HMO settlement in Nigeria is slow and full of disputes. I was curious whether the Stellar transaction model — cheap, fast, deterministic — could be a fit.",
-    approach:
-      "A minimal Rust service that orchestrates provider-payer reconciliation and tokenizes claim instruments on Stellar. Still a sketch, not a product.",
-    outcome:
-      "Useful as a learning exercise in domain modelling and tokenized state. Helped me get comfortable with Stellar's account model.",
-    stack: ["Rust", "Stellar", "TypeScript"],
-    highlights: [
-      "Reconciliation primitives in Rust",
-      "Claim tokenization sketch",
-      "MIT-licensed — anyone can fork and extend",
-    ],
-    status: "learning",
-    year: "2026",
-    repo: "https://github.com/BigJohn-dev/-MediPay-Stellar",
-    demo: null,
-    accent: "#ff7a3d",
-    tags: ["Stellar", "Rust", "Experiment"],
+    accent: "#00FFA3",
+    tags: ["Smart Contracts", "Soroban", "Fintech"],
   },
   {
     slug: "nairaramp",
     name: "NairaRamp",
-    oneLiner: "An SDK exploration for NGN ↔ USDC conversion.",
+    oneLiner: "A typed NGN ↔ USDC conversion SDK for Nigerian fintech.",
     problem:
-      "A few of my friends building Nigerian fintech kept rebuilding the same NGN/USDC bridge — KYC, off-ramp partner, fees. I wanted to see what a single typed SDK could look like.",
+      "Every Nigerian fintech rebuilding the same NGN/USDC bridge — KYC, off-ramp partners, fees — duplicates the same integration work. One well-typed SDK could absorb that.",
     approach:
-      "TypeScript SDK with a thin runtime: quote → quote-accept → settle. Provider adapters underneath, so the bridge details swap out without changing app code.",
+      "A TypeScript SDK with a provider-agnostic adapter pattern and a clean quote → accept → settle flow. Rate-locking semantics are enforced at the type level, so misuse fails at compile time.",
     outcome:
-      "Early-stage. The shape feels right; the provider integrations need real partners to harden.",
+      "The SDK surface is stable and the adapter pattern proven; provider integrations need real partners to harden.",
     stack: ["TypeScript", "Node.js", "Stellar SDK"],
     highlights: [
       "Provider-agnostic adapter pattern",
-      "Typed SDK surface",
-      "Quote-rate locking on the type level",
+      "Quote → accept → settle flow",
+      "Rate-locking enforced by the type system",
     ],
     status: "prototype",
     year: "2026",
     repo: "https://github.com/BigJohn-dev/NairaRamp-",
     demo: null,
-    accent: "#ff5b2e",
-    tags: ["SDK", "TypeScript", "Stellar"],
+    accent: "#3B82F6",
+    tags: ["SDK", "TypeScript", "Payments"],
+  },
+  {
+    slug: "medipay-stellar",
+    name: "MediPay Stellar",
+    oneLiner: "A healthcare settlement layer for hospital–HMO reconciliation.",
+    problem:
+      "Hospital ↔ HMO settlement in Nigeria is slow and dispute-heavy. Stellar's cheap, fast, deterministic transaction model looked like a genuine fit for claim settlement.",
+    approach:
+      "A reconciliation service prototyped in Rust that tokenizes claim instruments on the Stellar network for deterministic processing — domain modelling for healthcare payment disputes using Stellar's account model.",
+    outcome:
+      "A working reconciliation prototype and a much deeper understanding of tokenized state. MIT-licensed for anyone to fork and extend.",
+    stack: ["Rust", "Stellar", "TypeScript"],
+    highlights: [
+      "Claim instruments tokenized on-chain",
+      "Deterministic reconciliation primitives",
+      "Healthtech domain modelling",
+    ],
+    status: "prototype",
+    year: "2026",
+    repo: "https://github.com/BigJohn-dev/-MediPay-Stellar",
+    demo: null,
+    accent: "#EC4899",
+    tags: ["Healthtech", "Rust", "Stellar"],
   },
 
-  // ───────── Earlier: learning-phase projects ─────────
+  // ───────── Foundation: the fundamentals ─────────
   {
     slug: "wallet-system",
     name: "Wallet System",
-    oneLiner:
-      "A digital wallet for storing payment info, tracking transactions, and basic budgeting.",
+    oneLiner: "A digital payment backend — accounts, transactions, budgets.",
     problem:
-      "I wanted a project that touched a bunch of things at once — auth, persistence, transactions, money math, validation. A wallet was the perfect excuse.",
+      "One project touching everything that matters in fintech backend work at once: auth, persistence, transactions, money math, and validation.",
     approach:
-      "Backend in Python with a clean separation of accounts, transactions, and budgets. Added simple budgeting tools, transaction history, and rewards tracking on top.",
+      "A Python backend with a cleanly separated domain model — accounts, transactions, budgets. Money represented as integer minor units to eliminate floating-point errors, with comprehensive test coverage on the money paths.",
     outcome:
-      "Solidified the basics of API design, money handling (never floats), and writing tests that actually catch off-by-one bugs.",
+      "Transaction history, rewards tracking, and input validation that holds up. The foundation for how I still handle money in code today.",
     stack: ["Python", "PostgreSQL", "REST"],
     highlights: [
+      "Money as integer minor units — never floats",
       "Cleanly separated domain model",
-      "Money handled with integer minor units",
-      "Transaction history + simple budget primitives",
+      "Comprehensive test coverage",
     ],
     status: "learning",
     year: "2025",
     repo: "https://github.com/BigJohn-org",
     demo: null,
-    accent: "#9ad27a",
+    accent: "#6C5CE7",
     tags: ["Backend", "Python", "Fundamentals"],
   },
   {
-    slug: "todo-manager",
-    name: "ToDo Task Manager",
-    oneLiner:
-      "A smart to-do app with priorities, deadlines, and shared lists.",
+    slug: "portfolio",
+    name: "This Portfolio",
+    oneLiner: "An interactive digital universe — the site you're inside right now.",
     problem:
-      "Classic project — but I used it to dig into the small things that make a CRUD app feel good: deadline reminders, priority sorting, collaborative sharing.",
+      "A resume tells; it doesn't show. I wanted a portfolio that demonstrates engineering craft through the experience itself — motion, depth, and performance budgets instead of adjectives.",
     approach:
-      "Full-stack: simple backend with auth + a small frontend. The whole point was to make it actually pleasant to use, not just functional.",
+      "Next.js App Router with React Three Fiber for the living background, GSAP-grade scroll choreography via Framer Motion + Lenis, GLSL shaders for the nebula, and a fully data-driven content layer. Deployed on Vercel.",
     outcome:
-      "Helped me internalize how much of a 'simple' app is actually about the edges — empty states, loading states, what happens when two people edit the same task.",
-    stack: ["JavaScript", "Node.js", "MongoDB"],
+      "60fps target on mid-range hardware, lazy-loaded scenes, and a design system that reskins the entire site from a single token file.",
+    stack: ["Next.js", "React Three Fiber", "TypeScript", "Tailwind CSS"],
     highlights: [
-      "Priority + deadline sorting",
-      "Collaborative sharing",
-      "Built end-to-end as a solo project",
+      "Custom GLSL nebula + particle field",
+      "Scroll-driven cinematic camera moves",
+      "Single-source-of-truth content layer",
     ],
-    status: "learning",
-    year: "2025",
-    repo: "https://github.com/BigJohn-org/To-Do-List-Frontend",
-    demo: null,
-    accent: "#efece4",
-    tags: ["Full Stack", "JavaScript"],
-  },
-  {
-    slug: "movie-explorer",
-    name: "Movie Explorer",
-    oneLiner: "Browse, search, and discover movies — ratings and reviews.",
-    problem:
-      "I wanted a project that actually called external APIs and handled the messy real-world data that comes back.",
-    approach:
-      "React frontend that talks to The Movie Database (TMDb) API. Search, filtering, detail pages, the basics.",
-    outcome:
-      "Got more comfortable with React state, debouncing, pagination, and dealing with APIs that don't always return what you expected.",
-    stack: ["React", "JavaScript", "TMDb API"],
-    highlights: [
-      "Debounced search",
-      "Detail + listing pages",
-      "Real API integration",
-    ],
-    status: "learning",
-    year: "2024",
-    repo: "https://github.com/BigJohn-org/Movie-Explorer-website-with-React",
-    demo: null,
-    accent: "#5c8dff",
-    tags: ["Frontend", "React"],
-  },
-  {
-    slug: "calculator",
-    name: "Simple Calculator",
-    oneLiner: "Basic arithmetic — but cleanly built.",
-    problem:
-      "Day-one project. Made me think about parsing input, edge cases (divide-by-zero, decimals), and keeping a UI honest about state.",
-    approach:
-      "Vanilla JS / HTML / CSS. The fun was in keeping it small and tidy — the kind of code I can read a year later without flinching.",
-    outcome:
-      "A clean, working calculator. The point was less the calculator and more the discipline of finishing.",
-    stack: ["JavaScript", "HTML", "CSS"],
-    highlights: ["Edge-case-aware input parsing", "Tidy, readable code"],
-    status: "archived",
-    year: "2024",
-    repo: "https://github.com/BigJohn-dev/Simple-Calculator",
-    demo: null,
-    accent: "#8b8d94",
-    tags: ["JavaScript", "Fundamentals"],
+    status: "production",
+    year: "2026",
+    repo: "https://github.com/BigJohn-dev",
+    demo: "https://imeobongjohn.vercel.app",
+    accent: "#B87333",
+    tags: ["Frontend", "Three.js", "Craft"],
   },
 ];
 

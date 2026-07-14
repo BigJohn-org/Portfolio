@@ -3,7 +3,14 @@
     "allow": [
       "Bash(curl -sS -o /dev/null -w \"status=%{http_code}\\\\n\" http://localhost:3001/)",
       "Bash(curl -sS http://localhost:3001/)",
-      "WebFetch(domain:portfolio-two-nu-86.vercel.app)"
+      "WebFetch(domain:portfolio-two-nu-86.vercel.app)",
+      "PowerShell(Get-ChildItem \"C:\\\\Users\\\\Dell\\\\OneDrive\\\\Documents\\\\Portfolio\\\\public\" -Recurse | Select-Object FullName, Length | Format-Table -AutoSize; Get-ChildItem \"C:\\\\Users\\\\Dell\\\\Downloads\" | Where-Object { $_.LastWriteTime -gt \\(Get-Date\\).AddDays\\(-45\\) -and $_.Extension -match 'jpe?g|png|mp4|webp' } | Select-Object Name, Length, LastWriteTime | Format-Table -AutoSize)",
+      "PowerShell($m = \"C:\\\\Users\\\\Dell\\\\OneDrive\\\\Documents\\\\Portfolio\\\\public\\\\media\"; Copy-Item \"C:\\\\Users\\\\Dell\\\\Downloads\\\\IMG-20260601-WA0027.jpg\" \"$m\\\\photo-cafe-01.jpg\"; Copy-Item \"C:\\\\Users\\\\Dell\\\\Downloads\\\\IMG-20260601-WA0031.jpg\" \"$m\\\\photo-cafe-02.jpg\"; Copy-Item \"C:\\\\Users\\\\Dell\\\\Downloads\\\\Snapchat-987111783.jpg\" \"$m\\\\photo-car.jpg\"; Copy-Item \"C:\\\\Users\\\\Dell\\\\Downloads\\\\IMG-20260619-WA0062 \\(1\\).jpg\" \"$m\\\\photo-hall.jpg\"; Copy-Item \"C:\\\\Users\\\\Dell\\\\Downloads\\\\VID-20260601-WA0038.mp4\" \"$m\\\\video-cafe.mp4\"; Copy-Item \"C:\\\\Users\\\\Dell\\\\Downloads\\\\Snapchat-1674156840.mp4\" \"$m\\\\video-snap.mp4\"; Copy-Item \"C:\\\\Users\\\\Dell\\\\Downloads\\\\2026-06-20-120121403.mp4\" \"$m\\\\video-reel.mp4\"; Get-ChildItem $m | Where-Object Name -match 'cafe|car|hall|snap|reel' | Select-Object Name, Length)",
+      "PowerShell($shell = New-Object -ComObject Shell.Application; $folder = $shell.Namespace\\(\"C:\\\\Users\\\\Dell\\\\OneDrive\\\\Documents\\\\Portfolio\\\\public\\\\media\"\\); $wIdx = $null; $hIdx = $null; for \\($i = 0; $i -lt 350; $i++\\) { $n = $folder.GetDetailsOf\\($null, $i\\); if \\($n -eq 'Frame width'\\) { $wIdx = $i }; if \\($n -eq 'Frame height'\\) { $hIdx = $i } }; foreach \\($f in @\\('video-cafe.mp4','video-snap.mp4','video-reel.mp4','video-01.mp4','video-02.mp4'\\)\\) { $item = $folder.ParseName\\($f\\); \"{0}: {1} x {2}\" -f $f, $folder.GetDetailsOf\\($item, $wIdx\\), $folder.GetDetailsOf\\($item, $hIdx\\) })",
+      "PowerShell(npm run build)",
+      "PowerShell(npx next build)",
+      "PowerShell(if \\(Test-Path \"node_modules\"\\) { \"node_modules exists\"; \\(Get-ChildItem node_modules | Measure-Object\\).Count } else { \"node_modules MISSING\" })",
+      "PowerShell(npm install)"
     ]
   }
 }

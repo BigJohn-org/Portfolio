@@ -58,8 +58,17 @@ export default function ProjectCase({
               transformOrigin: "50% 100%",
               willChange: "transform",
             }}
-            className="group relative aspect-[16/11] overflow-hidden rounded-2xl border border-bone/10 bg-smoke shadow-[0_30px_80px_-20px_rgba(0,0,0,0.7)]"
+            className="group relative aspect-[16/11] overflow-hidden rounded-2xl border border-bone/10 bg-smoke shadow-island transition-all duration-600 ease-glide hover:-translate-y-1.5"
+            data-cursor
           >
+            {/* Island hover glow — takes the project's signature color */}
+            <div
+              aria-hidden
+              className="pointer-events-none absolute -inset-px z-10 rounded-2xl opacity-0 transition-opacity duration-600 group-hover:opacity-100"
+              style={{
+                boxShadow: `inset 0 0 0 1px ${project.accent}55, 0 0 44px -10px ${project.accent}66`,
+              }}
+            />
             {/* Stylized device frame mockup */}
             <div className="absolute inset-0 grid-bg opacity-50" />
             <div

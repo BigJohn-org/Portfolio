@@ -30,7 +30,7 @@ export default function ComingSoon() {
         className="pointer-events-none absolute inset-0 -z-10"
         style={{
           background:
-            "radial-gradient(60% 50% at 50% 0%, rgba(92,141,255,0.10), transparent 60%), radial-gradient(50% 40% at 80% 100%, rgba(255,91,46,0.07), transparent 70%)",
+            "radial-gradient(60% 50% at 50% 0%, rgba(108,92,231,0.10), transparent 60%), radial-gradient(50% 40% at 80% 100%, rgba(0,229,255,0.07), transparent 70%)",
         }}
       />
       <div className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-px bg-gradient-to-r from-transparent via-bone/30 to-transparent" />
@@ -41,7 +41,7 @@ export default function ComingSoon() {
           <div className="lg:col-span-5">
             <Reveal>
               <p className="eyebrow mb-6">
-                <span className="text-accent">004 — </span>Future systems
+                <span className="text-accent">005 — </span>Future systems
               </p>
             </Reveal>
 
@@ -130,7 +130,7 @@ export default function ComingSoon() {
                 ⌘ format
               </p>
               <p className="text-right font-serif italic text-bone/80">
-                Vertical · 424 × 642
+                Vertical · 1080 × 1920
               </p>
               <p className="mt-4 font-mono text-[10px] uppercase tracking-[0.22em] text-steel">
                 ⌘ runtime
@@ -210,7 +210,7 @@ function OmnistDashboard() {
         className="absolute inset-0"
         style={{
           background:
-            "radial-gradient(40% 40% at 30% 20%, rgba(92,141,255,0.18), transparent 60%), radial-gradient(40% 40% at 80% 90%, rgba(255,91,46,0.14), transparent 60%)",
+            "radial-gradient(40% 40% at 30% 20%, rgba(108,92,231,0.18), transparent 60%), radial-gradient(40% 40% at 80% 90%, rgba(0,229,255,0.14), transparent 60%)",
         }}
       />
       <div className="absolute inset-0 grid-bg opacity-50" />
